@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Shutter;
 
 class PageController extends Controller
 {
@@ -18,12 +19,14 @@ class PageController extends Controller
 
     public function visualisation()
     {
-        return view('visualisation');
+        $shutters = Shutter::all();
+        return view('visualisation', compact('shutters'));
     }
 
     public function gestion()
     {
-        return view('gestion');
+        $shutters = Shutter::all();
+        return view('gestion', compact('shutters'));
     }
 
     public function administration()

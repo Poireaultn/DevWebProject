@@ -3,29 +3,26 @@
 @section('title', 'Gestion')
 
 @section('content')
-<div class="card shadow">
-    <div class="card-header bg-warning text-dark">
-        <h2 class="mb-0">Gestion</h2>
-    </div>
-    <div class="card-body">
-        <h3>Section Gestion</h3>
-        <p>Gérez vos ressources et vos données.</p>
-        
-        <div class="row mt-4">
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h4>Ressources</h4>
-                        <p>Gérez vos ressources disponibles.</p>
-                    </div>
+<div class="container mt-4">
+    <h1 class="mb-4">Gestion</h1>
+    
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Volets Connectés</h5>
+                    <p class="card-text">Gérez vos volets connectés : ouverture, fermeture et programmation.</p>
+                    <a href="{{ route('shutters.index') }}" class="btn btn-primary">Gérer les volets</a>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h4>Utilisateurs</h4>
-                        <p>Gérez les utilisateurs du système.</p>
-                    </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Chauffages Connectés</h5>
+                    <p class="card-text">Gérez vos chauffages : allumage, température et mode de fonctionnement.</p>
+                    <a href="{{ route('heaters.index') }}" class="btn btn-primary">Gérer les chauffages</a>
                 </div>
             </div>
         </div>
