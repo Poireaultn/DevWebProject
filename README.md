@@ -90,6 +90,38 @@ php artisan serve
 - `public/` - Contient les fichiers accessibles publiquement
 - `config/` - Contient les fichiers de configuration
 
+## Configuration de la Base de Données
+
+Si vous rencontrez des problèmes avec la base de données, suivez ces étapes :
+
+1. Vérifiez votre fichier `.env` et assurez-vous qu'il contient les bonnes informations :
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=projetweb
+DB_USERNAME=votre_utilisateur
+DB_PASSWORD=votre_mot_de_passe
+```
+
+2. Exécutez les commandes suivantes dans l'ordre :
+```bash
+# Vider les caches
+php artisan config:clear
+php artisan route:clear
+php artisan cache:clear
+
+# Exécuter les migrations
+php artisan migrate:fresh
+# OU
+php artisan migrate
+```
+
+3. Si vous avez toujours des problèmes, vérifiez que :
+   - MySQL est bien installé et en cours d'exécution
+   - La base de données spécifiée dans `.env` existe
+   - L'utilisateur MySQL a les droits nécessaires
+
 ## Contribution
 
 1. Fork le projet
