@@ -122,6 +122,31 @@ php artisan migrate
    - La base de données spécifiée dans `.env` existe
    - L'utilisateur MySQL a les droits nécessaires
 
+## Configuration des Données
+
+Pour voir les données dans les sections "Visualisation" et "Gestion", suivez ces étapes :
+
+1. Exécutez les scripts de création des données :
+```bash
+php create_shutters.php
+php create_heaters.php
+```
+
+2. Vérifiez que les migrations sont à jour :
+```bash
+php artisan migrate:fresh
+```
+
+3. Vérifiez que les routes sont correctement configurées :
+```bash
+php artisan route:list
+```
+
+4. Si vous ne voyez toujours pas les données, vérifiez que :
+   - Les scripts de création ont été exécutés avec succès
+   - Les migrations ont été exécutées sans erreur
+   - Les routes sont correctement définies
+
 ## Contribution
 
 1. Fork le projet
