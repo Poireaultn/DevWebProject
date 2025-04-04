@@ -24,7 +24,7 @@ Un site web moderne développé avec Laravel pour la gestion et l'administration
 
 1. Cloner le projet :
 ```bash
-git clone [URL_DU_REPO]
+git clone https://github.com/Poireaultn/DevWebProject.git
 ```
 
 2. Installer les dépendances PHP :
