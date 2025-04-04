@@ -12,6 +12,7 @@ Un site web moderne développé avec Laravel pour la gestion et l'administration
   - Administration
 - Design moderne avec Bootstrap 5
 - Interface utilisateur intuitive
+- Système d'authentification
 
 ## Prérequis
 
@@ -37,19 +38,46 @@ composer install
 cp .env.example .env
 ```
 
-4. Générer la clé d'application :
+4. Configurer la base de données :
+   - Ouvrir le fichier `.env`
+   - Modifier les paramètres suivants selon votre configuration MySQL :
+     ```
+     DB_CONNECTION=mysql
+     DB_HOST=127.0.0.1
+     DB_PORT=3306
+     DB_DATABASE=projetweb
+     DB_USERNAME=votre_nom_utilisateur
+     DB_PASSWORD=votre_mot_de_passe
+     ```
+   - Créer la base de données :
+     ```sql
+     CREATE DATABASE projetweb;
+     ```
+
+5. Générer la clé d'application :
 ```bash
 php artisan key:generate
 ```
-
-5. Configurer la base de données dans le fichier .env
 
 6. Lancer les migrations :
 ```bash
 php artisan migrate
 ```
 
-7. Démarrer le serveur :
+7. Créer un utilisateur administrateur :
+```bash
+php artisan tinker
+```
+Puis dans la console tinker :
+```php
+$user = new App\Models\User;
+$user->name = 'Admin';
+$user->email = 'admin@example.com';
+$user->password = Hash::make('admin123');
+$user->save();
+```
+
+8. Démarrer le serveur :
 ```bash
 php artisan serve
 ```
@@ -65,10 +93,19 @@ php artisan serve
 ## Contribution
 
 1. Fork le projet
-2. Créer une branche pour votre fonctionnalité
-3. Commiter vos changements
-4. Pousser vers la branche
-5. Ouvrir une Pull Request
+2. Créer une branche pour votre fonctionnalité :
+```bash
+git checkout -b nom-de-la-fonctionnalite
+```
+3. Commiter vos changements :
+```bash
+git commit -m "Description de vos modifications"
+```
+4. Pousser vers la branche :
+```bash
+git push origin nom-de-la-fonctionnalite
+```
+5. Ouvrir une Pull Request sur GitHub
 
 ## Licence
 
