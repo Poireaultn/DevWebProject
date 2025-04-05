@@ -25,27 +25,35 @@ composer install
 cp .env.example .env
 ```
 
-4. Configurer la base de données dans le fichier `.env`
+4. Configurer la base de données dans le fichier `.env` :
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=projetweb
+DB_USERNAME=votre_utilisateur
+DB_PASSWORD=votre_mot_de_passe
+```
 
 5. Générer la clé d'application :
 ```bash
 php artisan key:generate
 ```
 
-6. Exécuter les migrations et les seeders :
+6. Créer la base de données :
+```sql
+CREATE DATABASE projetweb;
+```
+
+7. Exécuter les migrations et les seeders pour initialiser la base de données avec les objets connectés et l'emploi du temps :
 ```bash
 php artisan migrate:fresh --seed
 ```
 
-## Structure des données
-
-### Salles
-- PAU E109 à PAU E509 : Salles de classe
-- Bureau FASSI DIEUDONNE : Bureau professeur
-- Bureau DECOURCHELLE INES : Bureau professeur
-- Salle des Associations : Espace commun
-- Cafétéria : Espace commun
-- Bibliothèque : Espace commun
+8. Démarrer le serveur :
+```bash
+php artisan serve
+```
 
 ### Objets connectés
 
@@ -85,20 +93,22 @@ php artisan migrate:fresh --seed
 - Contrôle des objets connectés
 - Gestion de l'occupation des salles
 
-## Routes principales
 
-### Visualisation
-- `/visualisation/rooms` : État des salles
-- `/visualisation/schedule` : Emploi du temps
-- `/visualisation/lights` : État des lumières
-- `/visualisation/heaters` : État du chauffage
-- `/visualisation/shutters` : État des volets
+## Résolution des problèmes courants
 
-### Gestion
-- `/gestion/rooms` : Gestion des salles
-- `/gestion/lights` : Gestion des lumières
-- `/gestion/heaters` : Gestion du chauffage
-- `/gestion/shutters` : Gestion des volets
+1. **Les objets connectés ne s'affichent pas**
+   - Vérifiez que les migrations ont bien été exécutées
+   - Vérifiez que les seeders ont bien été exécutés
+   - Réexécutez `php artisan migrate:fresh --seed`
+
+2. **L'emploi du temps est vide**
+   - Vérifiez que le seeder des cours a bien été exécuté
+   - Réexécutez `php artisan migrate:fresh --seed`
+
+3. **Erreur de connexion à la base de données**
+   - Vérifiez les informations de connexion dans le fichier `.env`
+   - Vérifiez que le service MySQL est bien démarré
+   - Vérifiez que la base de données existe
 
 ## Prérequis
 
@@ -139,31 +149,6 @@ php artisan migrate
    - La base de données spécifiée dans `.env` existe
    - L'utilisateur MySQL a les droits nécessaires
 
-## Configuration des Données
-
-Pour voir les données dans les sections "Visualisation" et "Gestion", suivez ces étapes :
-
-1. Exécutez les scripts de création des données :
-```bash
-php create_shutters.php
-php create_heaters.php
-```
-
-2. Vérifiez que les migrations sont à jour :
-```bash
-php artisan migrate:fresh
-```
-
-3. Vérifiez que les routes sont correctement configurées :
-```bash
-php artisan route:list
-```
-
-4. Si vous ne voyez toujours pas les données, vérifiez que :
-   - Les scripts de création ont été exécutés avec succès
-   - Les migrations ont été exécutées sans erreur
-   - Les routes sont correctement définies
-
 ## Contribution
 
 1. Fork le projet
@@ -180,7 +165,3 @@ git commit -m "Description de vos modifications"
 git push origin nom-de-la-fonctionnalite
 ```
 5. Ouvrir une Pull Request sur GitHub
-
-## Licence
-
-Ce projet est sous licence MIT.
