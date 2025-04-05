@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             RoomOccupancySeeder::class,
             ConnectedObjectsSeeder::class,
             CourseSeeder::class,
+            ParkingSeeder::class,
+            BikeParkingSeeder::class,
         ]);
     }
 }

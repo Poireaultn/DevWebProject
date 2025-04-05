@@ -56,6 +56,26 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Parking Connecté</h5>
+                    <p class="card-text">Visualisez l'état du parking et le nombre de places disponibles en temps réel.</p>
+                    <a href="{{ route('parking.show') }}" class="btn btn-primary">Voir le parking</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Parking à Vélos</h5>
+                    <p class="card-text">Visualisez l'état du parking à vélos et le nombre de places disponibles en temps réel.</p>
+                    <a href="{{ route('bike_parking.show') }}" class="btn btn-primary">Voir le parking à vélos</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection 

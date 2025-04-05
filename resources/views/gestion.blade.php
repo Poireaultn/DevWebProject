@@ -46,6 +46,26 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Parking Connecté</h5>
+                    <p class="card-text">Gérez le parking : ouverture, fermeture et surveillance des places disponibles.</p>
+                    <a href="{{ route('parking.manage') }}" class="btn btn-primary">Gérer le parking</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Parking à Vélos</h5>
+                    <p class="card-text">Gérez le parking à vélos : ouverture, fermeture et surveillance des places disponibles.</p>
+                    <a href="{{ route('bike_parking.manage') }}" class="btn btn-primary">Gérer le parking à vélos</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection 

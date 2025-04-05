@@ -9,12 +9,15 @@ use App\Http\Controllers\LightController;
 use App\Http\Controllers\RoomOccupancyController;
 use App\Http\Controllers\RoomReservationController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ParkingController;
+use App\Http\Controllers\BikeParkingController;
 
-Route::get('/', [PageController::class, 'welcome']);
-Route::get('/information', [PageController::class, 'information']);
-Route::get('/visualisation', [PageController::class, 'visualisation']);
-Route::get('/gestion', [PageController::class, 'gestion']);
-Route::get('/administration', [PageController::class, 'administration']);
+// Routes principales
+Route::get('/', [PageController::class, 'welcome'])->name('welcome');
+Route::get('/information', [PageController::class, 'information'])->name('information');
+Route::get('/visualisation', [PageController::class, 'visualisation'])->name('visualisation');
+Route::get('/gestion', [PageController::class, 'gestion'])->name('gestion');
+Route::get('/administration', [PageController::class, 'administration'])->name('administration');
 
 // Routes d'authentification
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -49,4 +52,14 @@ Route::post('/rooms/reservations/{reservation}/cancel', [RoomReservationControll
 // Routes pour l'emploi du temps
 Route::get('/visualisation/schedule', [CourseController::class, 'schedule'])->name('schedule');
 Route::get('/gestion/schedule', [CourseController::class, 'manage'])->name('schedule.manage');
-Route::post('/schedule/store', [CourseController::class, 'store'])->name('schedule.store'); 
+Route::post('/schedule/store', [CourseController::class, 'store'])->name('schedule.store');
+
+// Routes pour le parking
+Route::get('/visualisation/parking', [ParkingController::class, 'show'])->name('parking.show');
+Route::get('/gestion/parking', [ParkingController::class, 'index'])->name('parking.manage');
+Route::post('/parking/toggle', [ParkingController::class, 'toggle'])->name('parking.toggle');
+
+// Routes pour le parking à vélos
+Route::get('/visualisation/bike-parking', [BikeParkingController::class, 'show'])->name('bike_parking.show');
+Route::get('/gestion/bike-parking', [BikeParkingController::class, 'index'])->name('bike_parking.manage');
+Route::post('/bike-parking/toggle', [BikeParkingController::class, 'toggle'])->name('bike_parking.toggle'); 
