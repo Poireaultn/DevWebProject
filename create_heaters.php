@@ -7,21 +7,7 @@ $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 use App\Models\Heater;
 
 $heaters = [
-    // Salles de classe
-    ['name' => 'Chauffage Salle 101'],
-    ['name' => 'Chauffage Salle 102'],
-    ['name' => 'Chauffage Salle 103'],
-    ['name' => 'Chauffage Salle 104'],
-    ['name' => 'Chauffage Salle 105'],
-    ['name' => 'Chauffage Salle 201'],
-    ['name' => 'Chauffage Salle 202'],
-    ['name' => 'Chauffage Salle 203'],
-    ['name' => 'Chauffage Salle 204'],
-    ['name' => 'Chauffage Salle 205'],
-    // Autres salles
-    ['name' => 'Chauffage Salle des Professeurs'],
-    ['name' => 'Chauffage Salle de Stockage'],
-    ['name' => 'Chauffage Salle des Associations']
+    ['name' => 'Chauffage Central École']
 ];
 
 foreach ($heaters as $heater) {

@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('heaters', function (Blueprint $table) {
+        Schema::create('room_reservations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->boolean('is_on')->default(false);
-            $table->decimal('temperature', 3, 1)->default(20.0);
-            $table->enum('mode', ['chauffage', 'climatisation'])->default('chauffage');
+            $table->string('room_name');
+            $table->string('reserved_by');
+            $table->string('purpose');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('heaters');
+        Schema::dropIfExists('room_reservations');
     }
 };

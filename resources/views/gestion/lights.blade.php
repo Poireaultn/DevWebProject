@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Gestion des Volets')
-
 @section('content')
 <div class="container">
-    <h2>Gestion des Volets</h2>
-
+    <h2>Gestion des Lumières</h2>
+    
     @if(session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -13,21 +11,21 @@
     @endif
 
     <div class="row">
-        @foreach($shutters as $shutter)
+        @foreach($lights as $light)
         <div class="col-md-4 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $shutter->room_name }}</h5>
+                    <h5 class="card-title">{{ $light->room_name }}</h5>
                     <p class="card-text">
                         État: 
-                        <span class="badge {{ $shutter->is_open ? 'bg-success' : 'bg-danger' }}">
-                            {{ $shutter->is_open ? 'Ouvert' : 'Fermé' }}
+                        <span class="badge {{ $light->is_on ? 'bg-success' : 'bg-danger' }}">
+                            {{ $light->is_on ? 'Allumée' : 'Éteinte' }}
                         </span>
                     </p>
-                    <form action="{{ route('shutters.toggle', $shutter) }}" method="POST">
+                    <form action="{{ route('lights.toggle', $light) }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn {{ $shutter->is_open ? 'btn-danger' : 'btn-success' }}">
-                            {{ $shutter->is_open ? 'Fermer' : 'Ouvrir' }}
+                        <button type="submit" class="btn {{ $light->is_on ? 'btn-danger' : 'btn-success' }}">
+                            {{ $light->is_on ? 'Éteindre' : 'Allumer' }}
                         </button>
                     </form>
                 </div>

@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shutters', function (Blueprint $table) {
+        Schema::create('lights', function (Blueprint $table) {
             $table->id();
             $table->string('room_name');
-            $table->boolean('is_open')->default(false);
+            $table->boolean('is_on')->default(false);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('shutters');
+        Schema::dropIfExists('lights');
     }
 };

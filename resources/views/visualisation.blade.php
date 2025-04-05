@@ -26,6 +26,36 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Lumières Connectées</h5>
+                    <p class="card-text">Visualisez l'état de l'éclairage dans chaque salle de l'école.</p>
+                    <a href="{{ route('lights.index') }}" class="btn btn-primary">Voir les lumières</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Occupation des Salles</h5>
+                    <p class="card-text">Visualisez le nombre de personnes dans chaque salle et le taux d'occupation.</p>
+                    <a href="{{ route('rooms.index') }}" class="btn btn-primary">Voir l'occupation</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Emploi du Temps</h5>
+                    <p class="card-text">Visualisez l'emploi du temps des salles et les cours programmés.</p>
+                    <a href="{{ route('schedule') }}" class="btn btn-primary">Voir l'emploi du temps</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection 

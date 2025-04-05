@@ -26,6 +26,26 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Lumières Connectées</h5>
+                    <p class="card-text">Gérez l'éclairage de l'école : allumer ou éteindre les lumières par salle.</p>
+                    <a href="{{ route('lights.manage') }}" class="btn btn-primary">Gérer les lumières</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Occupation des Salles</h5>
+                    <p class="card-text">Gérez l'occupation des salles : mettre à jour le nombre de personnes par salle.</p>
+                    <a href="{{ route('rooms.manage') }}" class="btn btn-primary">Gérer l'occupation</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection 

@@ -1,21 +1,19 @@
 @extends('layouts.app')
 
-@section('title', 'Visualisation des Volets')
-
 @section('content')
 <div class="container">
-    <h2>État des Volets</h2>
+    <h2>État des Lumières</h2>
 
     <div class="row">
-        @foreach($shutters as $shutter)
+        @foreach($lights as $light)
         <div class="col-md-4 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $shutter->room_name }}</h5>
+                    <h5 class="card-title">{{ $light->room_name }}</h5>
                     <p class="card-text">
                         État: 
-                        <span class="badge {{ $shutter->is_open ? 'bg-success' : 'bg-danger' }}">
-                            {{ $shutter->is_open ? 'Ouvert' : 'Fermé' }}
+                        <span class="badge {{ $light->is_on ? 'bg-success' : 'bg-danger' }}">
+                            {{ $light->is_on ? 'Allumée' : 'Éteinte' }}
                         </span>
                     </p>
                 </div>

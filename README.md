@@ -1,18 +1,104 @@
-# Projet Web - Site de Gestion
+# Projet de Gestion d'École
 
-Un site web moderne développé avec Laravel pour la gestion et l'administration de contenu.
+Ce projet permet de gérer les salles, les réservations et les objets connectés d'une école.
+
+## Configuration requise
+
+- PHP 8.3.6
+- Laravel 12.0
+- MySQL/MariaDB
+
+## Installation
+
+1. Cloner le projet :
+```bash
+git clone [URL_DU_REPO]
+```
+
+2. Installer les dépendances :
+```bash
+composer install
+```
+
+3. Copier le fichier d'environnement :
+```bash
+cp .env.example .env
+```
+
+4. Configurer la base de données dans le fichier `.env`
+
+5. Générer la clé d'application :
+```bash
+php artisan key:generate
+```
+
+6. Exécuter les migrations et les seeders :
+```bash
+php artisan migrate:fresh --seed
+```
+
+## Structure des données
+
+### Salles
+- PAU E109 à PAU E509 : Salles de classe
+- Bureau FASSI DIEUDONNE : Bureau professeur
+- Bureau DECOURCHELLE INES : Bureau professeur
+- Salle des Associations : Espace commun
+- Cafétéria : Espace commun
+- Bibliothèque : Espace commun
+
+### Objets connectés
+
+#### Chauffage
+- Un chauffage central unique pour tout le bâtiment
+- Modes : chauffage/climatisation
+- Température réglable entre 15°C et 30°C
+
+#### Lumières
+- Une lumière par salle
+- États : allumée/éteinte
+
+#### Volets
+- Un volet par salle
+- États : ouvert/fermé
+
+### Réservations de salles
+- Durée : 1 heure
+- Possibilité de réserver un créneau consécutif
+- Les bureaux des professeurs ne sont pas réservables
+- Informations requises :
+  - Motif de la réservation
+  - Heure de début
+  - Réservé par (nom de l'utilisateur)
 
 ## Fonctionnalités
 
-- Barre de navigation responsive
-- Sections principales :
-  - Information
-  - Visualisation
-  - Gestion
-  - Administration
-- Design moderne avec Bootstrap 5
-- Interface utilisateur intuitive
-- Système d'authentification
+### Module de visualisation
+- État des salles (libre/occupée/réservée)
+- Pourcentage de salles vides
+- État des objets connectés
+- Emploi du temps des salles
+- Réservations en cours et à venir
+
+### Module de gestion
+- Gestion des réservations de salles
+- Contrôle des objets connectés
+- Gestion de l'occupation des salles
+
+## Routes principales
+
+### Visualisation
+- `/visualisation/rooms` : État des salles
+- `/visualisation/schedule` : Emploi du temps
+- `/visualisation/lights` : État des lumières
+- `/visualisation/heaters` : État du chauffage
+- `/visualisation/shutters` : État des volets
+
+### Gestion
+- `/gestion/rooms` : Gestion des salles
+- `/gestion/lights` : Gestion des lumières
+- `/gestion/heaters` : Gestion du chauffage
+- `/gestion/shutters` : Gestion des volets
 
 ## Prérequis
 
@@ -20,75 +106,6 @@ Un site web moderne développé avec Laravel pour la gestion et l'administration
 - Composer
 - MySQL
 - Node.js (optionnel)
-
-## Installation
-
-1. Cloner le projet :
-```bash
-git clone https://github.com/Poireaultn/DevWebProject.git
-```
-
-2. Installer les dépendances PHP :
-```bash
-composer install
-```
-
-3. Copier le fichier .env :
-```bash
-cp .env.example .env
-```
-
-4. Configurer la base de données :
-   - Ouvrir le fichier `.env`
-   - Modifier les paramètres suivants selon votre configuration MySQL :
-     ```
-     DB_CONNECTION=mysql
-     DB_HOST=127.0.0.1
-     DB_PORT=3306
-     DB_DATABASE=projetweb
-     DB_USERNAME=votre_nom_utilisateur
-     DB_PASSWORD=votre_mot_de_passe
-     ```
-   - Créer la base de données :
-     ```sql
-     CREATE DATABASE projetweb;
-     ```
-
-5. Générer la clé d'application :
-```bash
-php artisan key:generate
-```
-
-6. Lancer les migrations :
-```bash
-php artisan migrate
-```
-
-7. Créer un utilisateur administrateur :
-```bash
-php artisan tinker
-```
-Puis dans la console tinker :
-```php
-$user = new App\Models\User;
-$user->name = 'Admin';
-$user->email = 'admin@example.com';
-$user->password = Hash::make('admin123');
-$user->save();
-```
-
-8. Démarrer le serveur :
-```bash
-php artisan serve
-```
-
-## Structure du Projet
-
-- `app/` - Contient la logique de l'application
-- `resources/` - Contient les vues et les assets
-- `routes/` - Définit les routes de l'application
-- `public/` - Contient les fichiers accessibles publiquement
-- `config/` - Contient les fichiers de configuration
 
 ## Configuration de la Base de Données
 
