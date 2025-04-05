@@ -45,7 +45,7 @@ php artisan key:generate
 CREATE DATABASE projetweb;
 ```
 
-7. Exécuter les migrations et les seeders pour initialiser la base de données avec les salles, les objets connectés et l'emploi du temps :
+7. Exécuter les migrations et les seeders pour initialiser la base de données avec les objets connectés et l'emploi du temps :
 ```bash
 php artisan migrate:fresh --seed
 ```
@@ -54,37 +54,6 @@ php artisan migrate:fresh --seed
 ```bash
 php artisan serve
 ```
-
-## Vérification de l'installation
-
-Après l'installation, vérifiez que tout fonctionne correctement :
-
-1. Accédez à `http://127.0.0.1:8000/visualisation/rooms`
-   - Vous devriez voir la liste des salles
-
-2. Accédez à `http://127.0.0.1:8000/visualisation/lights`
-   - Vous devriez voir les lumières de chaque salle
-
-3. Accédez à `http://127.0.0.1:8000/visualisation/heaters`
-   - Vous devriez voir le chauffage central
-
-4. Accédez à `http://127.0.0.1:8000/visualisation/shutters`
-   - Vous devriez voir les volets de chaque salle
-
-Si certains objets connectés ne s'affichent pas, réexécutez les migrations et les seeders :
-```bash
-php artisan migrate:fresh --seed
-```
-
-## Structure des données
-
-### Salles
-- PAU E109 à PAU E509 : Salles de classe
-- Bureau FASSI DIEUDONNE : Bureau professeur
-- Bureau DECOURCHELLE INES : Bureau professeur
-- Salle des Associations : Espace commun
-- Cafétéria : Espace commun
-- Bibliothèque : Espace commun
 
 ### Objets connectés
 
@@ -124,20 +93,6 @@ php artisan migrate:fresh --seed
 - Contrôle des objets connectés
 - Gestion de l'occupation des salles
 
-## Routes principales
-
-### Visualisation
-- `/visualisation/rooms` : État des salles
-- `/visualisation/schedule` : Emploi du temps
-- `/visualisation/lights` : État des lumières
-- `/visualisation/heaters` : État du chauffage
-- `/visualisation/shutters` : État des volets
-
-### Gestion
-- `/gestion/rooms` : Gestion des salles
-- `/gestion/lights` : Gestion des lumières
-- `/gestion/heaters` : Gestion du chauffage
-- `/gestion/shutters` : Gestion des volets
 
 ## Résolution des problèmes courants
 
@@ -194,31 +149,6 @@ php artisan migrate
    - La base de données spécifiée dans `.env` existe
    - L'utilisateur MySQL a les droits nécessaires
 
-## Configuration des Données
-
-Pour voir les données dans les sections "Visualisation" et "Gestion", suivez ces étapes :
-
-1. Exécutez les scripts de création des données :
-```bash
-php create_shutters.php
-php create_heaters.php
-```
-
-2. Vérifiez que les migrations sont à jour :
-```bash
-php artisan migrate:fresh
-```
-
-3. Vérifiez que les routes sont correctement configurées :
-```bash
-php artisan route:list
-```
-
-4. Si vous ne voyez toujours pas les données, vérifiez que :
-   - Les scripts de création ont été exécutés avec succès
-   - Les migrations ont été exécutées sans erreur
-   - Les routes sont correctement définies
-
 ## Contribution
 
 1. Fork le projet
@@ -235,7 +165,3 @@ git commit -m "Description de vos modifications"
 git push origin nom-de-la-fonctionnalite
 ```
 5. Ouvrir une Pull Request sur GitHub
-
-## Licence
-
-Ce projet est sous licence MIT.
