@@ -25,14 +25,53 @@ composer install
 cp .env.example .env
 ```
 
-4. Configurer la base de données dans le fichier `.env`
+4. Configurer la base de données dans le fichier `.env` :
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=projetweb
+DB_USERNAME=votre_utilisateur
+DB_PASSWORD=votre_mot_de_passe
+```
 
 5. Générer la clé d'application :
 ```bash
 php artisan key:generate
 ```
 
-6. Exécuter les migrations et les seeders :
+6. Créer la base de données :
+```sql
+CREATE DATABASE projetweb;
+```
+
+7. Exécuter les migrations et les seeders pour initialiser la base de données avec les salles, les objets connectés et l'emploi du temps :
+```bash
+php artisan migrate:fresh --seed
+```
+
+8. Démarrer le serveur :
+```bash
+php artisan serve
+```
+
+## Vérification de l'installation
+
+Après l'installation, vérifiez que tout fonctionne correctement :
+
+1. Accédez à `http://127.0.0.1:8000/visualisation/rooms`
+   - Vous devriez voir la liste des salles
+
+2. Accédez à `http://127.0.0.1:8000/visualisation/lights`
+   - Vous devriez voir les lumières de chaque salle
+
+3. Accédez à `http://127.0.0.1:8000/visualisation/heaters`
+   - Vous devriez voir le chauffage central
+
+4. Accédez à `http://127.0.0.1:8000/visualisation/shutters`
+   - Vous devriez voir les volets de chaque salle
+
+Si certains objets connectés ne s'affichent pas, réexécutez les migrations et les seeders :
 ```bash
 php artisan migrate:fresh --seed
 ```
@@ -99,6 +138,22 @@ php artisan migrate:fresh --seed
 - `/gestion/lights` : Gestion des lumières
 - `/gestion/heaters` : Gestion du chauffage
 - `/gestion/shutters` : Gestion des volets
+
+## Résolution des problèmes courants
+
+1. **Les objets connectés ne s'affichent pas**
+   - Vérifiez que les migrations ont bien été exécutées
+   - Vérifiez que les seeders ont bien été exécutés
+   - Réexécutez `php artisan migrate:fresh --seed`
+
+2. **L'emploi du temps est vide**
+   - Vérifiez que le seeder des cours a bien été exécuté
+   - Réexécutez `php artisan migrate:fresh --seed`
+
+3. **Erreur de connexion à la base de données**
+   - Vérifiez les informations de connexion dans le fichier `.env`
+   - Vérifiez que le service MySQL est bien démarré
+   - Vérifiez que la base de données existe
 
 ## Prérequis
 
