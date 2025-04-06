@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class SmokeDetectorController extends Controller
 {
-    public function index()
+    public function manage()
     {
         $detectors = SmokeDetector::all();
         return view('smoke_detectors.index', compact('detectors'));

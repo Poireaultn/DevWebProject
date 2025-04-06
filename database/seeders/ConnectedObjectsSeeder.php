@@ -14,6 +14,7 @@ class ConnectedObjectsSeeder extends Seeder
     {
         // Création du chauffage central unique
         Heater::create([
+            'name' => 'Chauffage Central',
             'room_name' => 'Chauffage Central',
             'is_on' => false,
             'current_temperature' => 20,
@@ -26,12 +27,14 @@ class ConnectedObjectsSeeder extends Seeder
         foreach ($rooms as $room) {
             // Création des lumières
             Light::create([
-                'room_name' => $room->room_name,
+                'name' => 'Lumière ' . $room->room_name,
+                'room' => $room->room_name,
                 'is_on' => false
             ]);
 
             // Création des volets
             Shutter::create([
+                'name' => 'Volet ' . $room->room_name,
                 'room_name' => $room->room_name,
                 'is_open' => false
             ]);

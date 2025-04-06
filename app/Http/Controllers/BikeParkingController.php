@@ -14,7 +14,7 @@ class BikeParkingController extends Controller
         return view('bike_parking.show', compact('bikeParking'));
     }
 
-    public function index()
+    public function manage()
     {
         $bikeParking = BikeParking::first();
         return view('bike_parking.manage', compact('bikeParking'));

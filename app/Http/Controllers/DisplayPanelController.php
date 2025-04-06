@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class DisplayPanelController extends Controller
 {
-    public function index()
+    public function manage()
     {
         $panels = DisplayPanel::all();
         return view('display_panels.index', compact('panels'));
