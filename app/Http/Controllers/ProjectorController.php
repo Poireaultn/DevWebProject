@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ProjectorController extends Controller
 {
-    public function index()
+    public function manage()
     {
         $projectors = Projector::all();
         return view('projectors.index', compact('projectors'));
