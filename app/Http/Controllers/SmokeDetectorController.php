@@ -21,12 +21,11 @@ class SmokeDetectorController extends Controller
 
     public function update(Request $request, SmokeDetector $detector)
     {
-        $validated = $request->validate([
-            'is_active' => 'boolean',
-            'smoke_detected' => 'boolean'
-        ]);
-
-        $detector->update($validated);
+        // Les cases à cocher non cochées ne sont pas envoyées dans la requête
+        // donc on doit les traiter explicitement
+        $detector->is_active = $request->has('is_active');
+        $detector->smoke_detected = $request->has('smoke_detected');
+        $detector->save();
 
         return redirect()->route('smoke_detectors.manage')
             ->with('success', 'Détecteur de fumée mis à jour avec succès');
