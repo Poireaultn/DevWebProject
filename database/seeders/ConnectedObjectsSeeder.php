@@ -6,6 +6,9 @@ use App\Models\Light;
 use App\Models\Heater;
 use App\Models\Shutter;
 use App\Models\RoomOccupancy;
+use App\Models\DisplayPanel;
+use App\Models\SmokeDetector;
+use App\Models\Projector;
 use Illuminate\Database\Seeder;
 
 class ConnectedObjectsSeeder extends Seeder
@@ -37,6 +40,31 @@ class ConnectedObjectsSeeder extends Seeder
                 'name' => 'Volet ' . $room->room_name,
                 'room_name' => $room->room_name,
                 'is_open' => false
+            ]);
+
+            // Création des panneaux d'affichage
+            DisplayPanel::create([
+                'name' => 'Panneau ' . $room->room_name,
+                'room' => $room->room_name,
+                'status' => 'off',
+                'content' => 'Bienvenue dans la salle ' . $room->room_name
+            ]);
+
+            // Création des détecteurs de fumée
+            SmokeDetector::create([
+                'name' => 'Détecteur ' . $room->room_name,
+                'room_name' => $room->room_name,
+                'is_active' => true,
+                'smoke_detected' => false
+            ]);
+
+            // Création des vidéoprojecteurs
+            Projector::create([
+                'name' => 'Projecteur ' . $room->room_name,
+                'room_name' => $room->room_name,
+                'is_on' => false,
+                'source' => 'HDMI1',
+                'brightness' => 50
             ]);
         }
     }
