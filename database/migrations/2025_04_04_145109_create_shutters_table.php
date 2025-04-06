@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('shutters', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('room_name');
             $table->boolean('is_open')->default(false);
             $table->timestamps();

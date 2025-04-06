@@ -9,5 +9,9 @@ class Shutter extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'is_open'];
+    protected $fillable = [
+        'name',
+        'room_name',
+        'is_open'
+    ];
 }

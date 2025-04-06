@@ -26,7 +26,7 @@ cp .env.example .env
 ```
 
 4. Configurer la base de données dans le fichier `.env` :
-```
+```bash
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -70,6 +70,12 @@ php artisan serve
 - Un volet par salle
 - États : ouvert/fermé
 
+#### Panneaux d'affichage
+- Un panneau par salle
+- États : allumé/éteint
+- Contenu personnalisable
+- Interface de gestion dédiée
+
 ### Réservations de salles
 - Durée : 1 heure
 - Possibilité de réserver un créneau consécutif
@@ -87,11 +93,13 @@ php artisan serve
 - État des objets connectés
 - Emploi du temps des salles
 - Réservations en cours et à venir
+- Visualisation des panneaux d'affichage
 
 ### Module de gestion
 - Gestion des réservations de salles
 - Contrôle des objets connectés
 - Gestion de l'occupation des salles
+- Gestion des panneaux d'affichage (statut et contenu)
 
 
 ## Résolution des problèmes courants

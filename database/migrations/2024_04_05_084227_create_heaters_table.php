@@ -10,6 +10,7 @@ return new class extends Migration
     {
         Schema::create('heaters', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('room_name');
             $table->boolean('is_on')->default(false);
             $table->float('current_temperature')->default(20);

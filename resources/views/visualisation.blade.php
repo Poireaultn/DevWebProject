@@ -76,6 +76,19 @@
                 </div>
             </div>
         </div>
+
+        <!-- Panneaux d'affichage -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Panneaux d'affichage</h5>
+                    <p class="card-text">Visualiser l'état des panneaux d'affichage</p>
+                    <a href="{{ route('display_panels.show') }}" class="btn btn-primary">
+                        Voir les panneaux
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection 

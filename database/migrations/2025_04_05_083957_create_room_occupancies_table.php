@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('room_occupancies', function (Blueprint $table) {
             $table->id();
             $table->string('room_name');
-            $table->string('room_type');
+            $table->string('room_type')->default('classroom');
             $table->integer('people_count')->default(0);
             $table->timestamps();
         });

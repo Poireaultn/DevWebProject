@@ -6,25 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        Schema::create('lights', function (Blueprint $table) {
+        Schema::create('display_panels', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('room');
-            $table->boolean('is_on')->default(false);
+            $table->string('status')->default('off');
+            $table->text('content')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('lights');
+        Schema::dropIfExists('display_panels');
     }
-};
+}; 

@@ -11,6 +11,7 @@ use App\Http\Controllers\RoomReservationController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\BikeParkingController;
+use App\Http\Controllers\DisplayPanelController;
 
 // Routes principales
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
@@ -62,4 +63,12 @@ Route::post('/parking/toggle', [ParkingController::class, 'toggle'])->name('park
 // Routes pour le parking à vélos
 Route::get('/visualisation/bike-parking', [BikeParkingController::class, 'show'])->name('bike_parking.show');
 Route::get('/gestion/bike-parking', [BikeParkingController::class, 'index'])->name('bike_parking.manage');
-Route::post('/bike-parking/toggle', [BikeParkingController::class, 'toggle'])->name('bike_parking.toggle'); 
+Route::post('/bike-parking/toggle', [BikeParkingController::class, 'toggle'])->name('bike_parking.toggle');
+
+// Routes pour les panneaux d'affichage
+Route::get('/visualisation/display-panels', [DisplayPanelController::class, 'show'])->name('display_panels.show');
+Route::get('/gestion/display-panels', [DisplayPanelController::class, 'index'])->name('display_panels.manage');
+Route::put('/display-panels/{panel}', [DisplayPanelController::class, 'update'])->name('display_panels.update');
+
+// Supprimer la route resource qui peut causer des conflits
+// Route::resource('display_panels', DisplayPanelController::class); 

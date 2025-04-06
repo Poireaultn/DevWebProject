@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Heater extends Model
+class DisplayPanel extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
-        'room_name',
-        'is_on',
-        'current_temperature',
-        'target_temperature',
-        'mode'
+        'room',
+        'status',
+        'content'
     ];
-}
+} 
