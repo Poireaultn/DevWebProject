@@ -107,17 +107,5 @@
             </div>
         </div>
     </div>
-
-    <div class="row mb-4">
-        <div class="col-md-3">
-            <a href="{{ route('display_panels.show') }}" class="btn btn-primary w-100">Voir les panneaux</a>
-        </div>
-        <div class="col-md-3">
-            <a href="{{ route('smoke_detectors.show') }}" class="btn btn-primary w-100">Voir les détecteurs de fumée</a>
-        </div>
-        <div class="col-md-3">
-            <a href="{{ route('projectors.show') }}" class="btn btn-primary w-100">Voir les vidéoprojecteurs</a>
-        </div>
-    </div>
 </div>
 @endsection 
