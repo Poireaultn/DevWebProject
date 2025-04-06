@@ -12,6 +12,8 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ParkingController;
 use App\Http\Controllers\BikeParkingController;
 use App\Http\Controllers\DisplayPanelController;
+use App\Http\Controllers\SmokeDetectorController;
+use App\Http\Controllers\ProjectorController;
 
 // Routes principales
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
@@ -69,6 +71,16 @@ Route::post('/bike-parking/toggle', [BikeParkingController::class, 'toggle'])->n
 Route::get('/visualisation/display-panels', [DisplayPanelController::class, 'show'])->name('display_panels.show');
 Route::get('/gestion/display-panels', [DisplayPanelController::class, 'index'])->name('display_panels.manage');
 Route::put('/display-panels/{panel}', [DisplayPanelController::class, 'update'])->name('display_panels.update');
+
+// Routes pour les détecteurs de fumée
+Route::get('/visualisation/smoke-detectors', [SmokeDetectorController::class, 'show'])->name('smoke_detectors.show');
+Route::get('/gestion/smoke-detectors', [SmokeDetectorController::class, 'index'])->name('smoke_detectors.manage');
+Route::put('/smoke-detectors/{detector}', [SmokeDetectorController::class, 'update'])->name('smoke_detectors.update');
+
+// Routes pour les vidéoprojecteurs
+Route::get('/visualisation/projectors', [ProjectorController::class, 'show'])->name('projectors.show');
+Route::get('/gestion/projectors', [ProjectorController::class, 'index'])->name('projectors.manage');
+Route::put('/projectors/{projector}', [ProjectorController::class, 'update'])->name('projectors.update');
 
 // Supprimer la route resource qui peut causer des conflits
 // Route::resource('display_panels', DisplayPanelController::class); 

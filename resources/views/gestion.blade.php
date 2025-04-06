@@ -67,15 +67,32 @@
             </div>
         </div>
 
-        <!-- Panneaux d'affichage -->
         <div class="col-md-4 mb-4">
             <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Panneaux d'affichage</h5>
-                    <p class="card-text">Gérer les panneaux d'affichage</p>
-                    <a href="{{ route('display_panels.manage') }}" class="btn btn-primary">
-                        Gérer les panneaux
-                    </a>
+                <div class="card-body">
+                    <h5 class="card-title">Panneaux d'Affichage</h5>
+                    <p class="card-text">Gérez le contenu et l'état des panneaux d'affichage dans chaque salle.</p>
+                    <a href="{{ route('display_panels.manage') }}" class="btn btn-primary">Gérer les panneaux</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Détecteurs de Fumée</h5>
+                    <p class="card-text">Gérez les détecteurs de fumée : activation, désactivation et surveillance des alertes.</p>
+                    <a href="{{ route('smoke_detectors.manage') }}" class="btn btn-primary">Gérer les détecteurs</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Vidéoprojecteurs</h5>
+                    <p class="card-text">Gérez les vidéoprojecteurs : allumage, source et réglage de la luminosité.</p>
+                    <a href="{{ route('projectors.manage') }}" class="btn btn-primary">Gérer les projecteurs</a>
                 </div>
             </div>
         </div>

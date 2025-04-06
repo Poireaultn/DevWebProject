@@ -77,17 +77,46 @@
             </div>
         </div>
 
-        <!-- Panneaux d'affichage -->
         <div class="col-md-4 mb-4">
             <div class="card">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Panneaux d'affichage</h5>
-                    <p class="card-text">Visualiser l'état des panneaux d'affichage</p>
-                    <a href="{{ route('display_panels.show') }}" class="btn btn-primary">
-                        Voir les panneaux
-                    </a>
+                <div class="card-body">
+                    <h5 class="card-title">Panneaux d'Affichage</h5>
+                    <p class="card-text">Visualisez l'état et le contenu des panneaux d'affichage dans chaque salle.</p>
+                    <a href="{{ route('display_panels.show') }}" class="btn btn-primary">Voir les panneaux</a>
                 </div>
             </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Détecteurs de Fumée</h5>
+                    <p class="card-text">Visualisez l'état des détecteurs de fumée et les alertes en temps réel.</p>
+                    <a href="{{ route('smoke_detectors.show') }}" class="btn btn-primary">Voir les détecteurs</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Vidéoprojecteurs</h5>
+                    <p class="card-text">Visualisez l'état et les paramètres des vidéoprojecteurs en temps réel.</p>
+                    <a href="{{ route('projectors.show') }}" class="btn btn-primary">Voir les projecteurs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <a href="{{ route('display_panels.show') }}" class="btn btn-primary w-100">Voir les panneaux</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{{ route('smoke_detectors.show') }}" class="btn btn-primary w-100">Voir les détecteurs de fumée</a>
+        </div>
+        <div class="col-md-3">
+            <a href="{{ route('projectors.show') }}" class="btn btn-primary w-100">Voir les vidéoprojecteurs</a>
         </div>
     </div>
 </div>
