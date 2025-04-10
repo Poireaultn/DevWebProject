@@ -47,7 +47,7 @@ Route::post('/lights/{light}/toggle', [LightController::class, 'toggle'])->name(
 
 // Routes pour l'occupation des salles
 Route::get('/visualisation/rooms', [RoomOccupancyController::class, 'show'])->name('rooms.index');
-Route::get('/gestion/rooms', [RoomOccupancyController::class, 'manage'])->name('rooms.manage');
+Route::get('/gestion/rooms', [RoomOccupancyController::class, 'index'])->name('rooms.index');
 Route::post('/rooms/{room}/update-occupancy', [RoomOccupancyController::class, 'updateOccupancy'])->name('rooms.update-occupancy');
 
 // Routes pour les réservations de salles

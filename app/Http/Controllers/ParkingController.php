@@ -29,4 +29,10 @@ class ParkingController extends Controller
         return redirect()->route('parking.manage')
             ->with('success', 'Le parking a été ' . ($parking->is_open ? 'ouvert' : 'fermé') . ' avec succès.');
     }
+
+    public function manage()
+    {
+        $parking = Parking::all();
+        return view('gestion.parking', compact('parking'));
+    }
 } 

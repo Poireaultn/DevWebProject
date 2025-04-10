@@ -51,22 +51,17 @@ class PageController extends Controller
                 ],
                 [
                     'title' => 'Parking Voiture',
-                    'route' => 'parkings.index',
+                    'route' => 'parking.manage',
                     'description' => 'Gérer les places de parking voiture'
                 ],
                 [
                     'title' => 'Parking Vélo',
-                    'route' => 'bike_parkings.index',
+                    'route' => 'bike_parking.manage',
                     'description' => 'Gérer les places de parking vélo'
                 ],
                 [
-                    'title' => 'Distributeurs Café',
-                    'route' => 'coffee_machines.index',
-                    'description' => 'Gérer les distributeurs de café'
-                ],
-                [
                     'title' => 'Vidéoprojecteurs',
-                    'route' => 'projectors.index',
+                    'route' => 'projectors.manage',
                     'description' => 'Gérer les vidéoprojecteurs'
                 ]
             ];
@@ -80,12 +75,12 @@ class PageController extends Controller
                 ],
                 [
                     'title' => 'Parking Voiture',
-                    'route' => 'parkings.index',
+                    'route' => 'parking.manage',
                     'description' => 'Gérer les places de parking voiture'
                 ],
                 [
                     'title' => 'Parking Vélo',
-                    'route' => 'bike_parkings.index',
+                    'route' => 'bike_parking.manage',
                     'description' => 'Gérer les places de parking vélo'
                 ],
                 [
@@ -95,7 +90,7 @@ class PageController extends Controller
                 ],
                 [
                     'title' => 'Vidéoprojecteurs',
-                    'route' => 'projectors.index',
+                    'route' => 'projectors.manage',
                     'description' => 'Gérer les vidéoprojecteurs'
                 ],
                 [
