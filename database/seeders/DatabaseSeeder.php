@@ -13,11 +13,54 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Création des différents profils
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@cytech.fr',
+            'password' => bcrypt('admin123'),
+            'role' => 'admin'
+        ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        User::create([
+            'name' => 'Étudiant',
+            'email' => 'etudiant@cytech.fr',
+            'password' => bcrypt('etudiant123'),
+            'role' => 'etudiant'
+        ]);
+
+        User::create([
+            'name' => 'Étudiant Association',
+            'email' => 'asso@cytech.fr',
+            'password' => bcrypt('asso123'),
+            'role' => 'etudiant_asso'
+        ]);
+
+        User::create([
+            'name' => 'Étudiant Handicapé',
+            'email' => 'handicape@cytech.fr',
+            'password' => bcrypt('handicape123'),
+            'role' => 'etudiant_handicape'
+        ]);
+
+        User::create([
+            'name' => 'Professeur',
+            'email' => 'prof@cytech.fr',
+            'password' => bcrypt('prof123'),
+            'role' => 'professeur'
+        ]);
+
+        User::create([
+            'name' => 'Sécurité',
+            'email' => 'securite@cytech.fr',
+            'password' => bcrypt('securite123'),
+            'role' => 'securite'
+        ]);
+
+        User::create([
+            'name' => 'Administration',
+            'email' => 'administration@cytech.fr',
+            'password' => bcrypt('admin123'),
+            'role' => 'administration'
         ]);
 
         $this->call([

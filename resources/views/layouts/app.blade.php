@@ -32,14 +32,17 @@
                 <ul class="navbar-nav ms-auto">
                     @auth
                         <li class="nav-item">
-                            <form action="{{ route('logout') }}" method="POST">
+                            <span class="nav-link">Connecté en tant que : {{ Auth::user()->name }}</span>
+                        </li>
+                        <li class="nav-item">
+                            <form action="{{ route('logout') }}" method="POST" class="d-inline">
                                 @csrf
-                                <button type="submit" class="btn btn-outline-light">Déconnexion</button>
+                                <button type="submit" class="btn btn-link nav-link">Déconnexion</button>
                             </form>
                         </li>
                     @else
                         <li class="nav-item">
-                            <a href="{{ route('login') }}" class="btn btn-outline-light">Connexion</a>
+                            <a class="nav-link" href="{{ route('login') }}">Connexion</a>
                         </li>
                     @endauth
                 </ul>
