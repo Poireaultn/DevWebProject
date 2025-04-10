@@ -39,19 +39,89 @@ class PageController extends Controller
 
     public function gestion()
     {
-        $shutters = Shutter::all();
-        $parkings = collect();
-        $bikeParkings = collect();
-        
-        if (Schema::hasTable('parkings')) {
-            $parkings = Parking::all();
+        $user = auth()->user();
+        $items = [];
+
+        if ($user->role === 'etudiant') {
+            $items = [
+                [
+                    'title' => 'Salles de Classe',
+                    'route' => 'rooms.index',
+                    'description' => 'Gérer les salles de classe'
+                ],
+                [
+                    'title' => 'Parking Voiture',
+                    'route' => 'parkings.index',
+                    'description' => 'Gérer les places de parking voiture'
+                ],
+                [
+                    'title' => 'Parking Vélo',
+                    'route' => 'bike_parkings.index',
+                    'description' => 'Gérer les places de parking vélo'
+                ],
+                [
+                    'title' => 'Distributeurs Café',
+                    'route' => 'coffee_machines.index',
+                    'description' => 'Gérer les distributeurs de café'
+                ],
+                [
+                    'title' => 'Vidéoprojecteurs',
+                    'route' => 'projectors.index',
+                    'description' => 'Gérer les vidéoprojecteurs'
+                ]
+            ];
+        } else {
+            // Pour les autres rôles, afficher tous les éléments
+            $items = [
+                [
+                    'title' => 'Salles de Classe',
+                    'route' => 'rooms.index',
+                    'description' => 'Gérer les salles de classe'
+                ],
+                [
+                    'title' => 'Parking Voiture',
+                    'route' => 'parkings.index',
+                    'description' => 'Gérer les places de parking voiture'
+                ],
+                [
+                    'title' => 'Parking Vélo',
+                    'route' => 'bike_parkings.index',
+                    'description' => 'Gérer les places de parking vélo'
+                ],
+                [
+                    'title' => 'Distributeurs Café',
+                    'route' => 'coffee_machines.index',
+                    'description' => 'Gérer les distributeurs de café'
+                ],
+                [
+                    'title' => 'Vidéoprojecteurs',
+                    'route' => 'projectors.index',
+                    'description' => 'Gérer les vidéoprojecteurs'
+                ],
+                [
+                    'title' => 'Caméras',
+                    'route' => 'cameras.index',
+                    'description' => 'Gérer les caméras'
+                ],
+                [
+                    'title' => 'Lumières',
+                    'route' => 'lights.manage',
+                    'description' => 'Gérer les lumières'
+                ],
+                [
+                    'title' => 'Chauffages',
+                    'route' => 'heaters.index',
+                    'description' => 'Gérer les chauffages'
+                ],
+                [
+                    'title' => 'Volets',
+                    'route' => 'shutters.index',
+                    'description' => 'Gérer les volets'
+                ]
+            ];
         }
-        
-        if (Schema::hasTable('bike_parkings')) {
-            $bikeParkings = BikeParking::all();
-        }
-        
-        return view('gestion', compact('shutters', 'parkings', 'bikeParkings'));
+
+        return view('gestion.index', compact('items'));
     }
 
     public function administration()
