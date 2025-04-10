@@ -106,6 +106,26 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Caméras</h5>
+                    <p class="card-text">Visualisez l'état et le niveau de batterie des caméras en temps réel.</p>
+                    <a href="{{ route('cameras.show') }}" class="btn btn-primary">Voir les caméras</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Distributeurs de Café</h5>
+                    <p class="card-text">Visualisez les produits disponibles et leurs prix dans les distributeurs de café.</p>
+                    <a href="{{ route('coffee_machines.show') }}" class="btn btn-primary">Voir les distributeurs</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection 

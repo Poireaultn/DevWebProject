@@ -14,6 +14,8 @@ use App\Http\Controllers\BikeParkingController;
 use App\Http\Controllers\DisplayPanelController;
 use App\Http\Controllers\SmokeDetectorController;
 use App\Http\Controllers\ProjectorController;
+use App\Http\Controllers\CameraController;
+use App\Http\Controllers\CoffeeMachineController;
 
 // Routes principales
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
@@ -29,18 +31,18 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Routes pour les volets
 Route::get('/visualisation/shutters', [ShutterController::class, 'show'])->name('shutters.show');
-Route::get('/gestion/shutters', [ShutterController::class, 'manage'])->name('shutters.index');
+Route::get('/gestion/shutters', [ShutterController::class, 'index'])->name('shutters.index');
 Route::post('/shutters/{shutter}/toggle', [ShutterController::class, 'toggle'])->name('shutters.toggle');
 
 // Routes pour les chauffages
 Route::get('/visualisation/heaters', [HeaterController::class, 'show'])->name('heaters.show');
-Route::get('/gestion/heaters', [HeaterController::class, 'manage'])->name('heaters.index');
+Route::get('/gestion/heaters', [HeaterController::class, 'index'])->name('heaters.index');
 Route::post('/heaters/{heater}/toggle', [HeaterController::class, 'toggle'])->name('heaters.toggle');
 Route::post('/heaters/{heater}/update', [HeaterController::class, 'update'])->name('heaters.update');
 
 // Routes pour les lumières
 Route::get('/visualisation/lights', [LightController::class, 'show'])->name('lights.index');
-Route::get('/gestion/lights', [LightController::class, 'manage'])->name('lights.manage');
+Route::get('/gestion/lights', [LightController::class, 'index'])->name('lights.manage');
 Route::post('/lights/{light}/toggle', [LightController::class, 'toggle'])->name('lights.toggle');
 
 // Routes pour l'occupation des salles
@@ -81,6 +83,17 @@ Route::put('/smoke-detectors/{detector}', [SmokeDetectorController::class, 'upda
 Route::get('/visualisation/projectors', [ProjectorController::class, 'show'])->name('projectors.show');
 Route::get('/gestion/projectors', [ProjectorController::class, 'manage'])->name('projectors.manage');
 Route::put('/projectors/{projector}', [ProjectorController::class, 'update'])->name('projectors.update');
+
+// Routes pour les caméras
+Route::get('/visualisation/cameras', [CameraController::class, 'show'])->name('cameras.show');
+Route::get('/gestion/cameras', [CameraController::class, 'index'])->name('cameras.index');
+Route::post('/cameras/{camera}/toggle', [CameraController::class, 'toggle'])->name('cameras.toggle');
+
+// Routes pour les distributeurs de café
+Route::get('/visualisation/coffee-machines', [CoffeeMachineController::class, 'show'])->name('coffee_machines.show');
+Route::get('/gestion/coffee-machines', [CoffeeMachineController::class, 'index'])->name('coffee_machines.index');
+Route::post('/coffee-machines/{coffeeMachine}/toggle', [CoffeeMachineController::class, 'toggle'])->name('coffee_machines.toggle');
+Route::post('/coffee-machines/{coffeeMachine}/update-product', [CoffeeMachineController::class, 'updateProduct'])->name('coffee_machines.update_product');
 
 // Supprimer la route resource qui peut causer des conflits
 // Route::resource('display_panels', DisplayPanelController::class); 

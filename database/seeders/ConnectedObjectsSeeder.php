@@ -9,6 +9,8 @@ use App\Models\RoomOccupancy;
 use App\Models\DisplayPanel;
 use App\Models\SmokeDetector;
 use App\Models\Projector;
+use App\Models\Camera;
+use App\Models\CoffeeMachine;
 use Illuminate\Database\Seeder;
 
 class ConnectedObjectsSeeder extends Seeder
@@ -31,7 +33,7 @@ class ConnectedObjectsSeeder extends Seeder
             // Création des lumières
             Light::create([
                 'name' => 'Lumière ' . $room->room_name,
-                'room' => $room->room_name,
+                'room_name' => $room->room_name,
                 'is_on' => false
             ]);
 
@@ -66,6 +68,41 @@ class ConnectedObjectsSeeder extends Seeder
                 'source' => 'HDMI1',
                 'brightness' => 50
             ]);
+
+            // Création des caméras
+            Camera::create([
+                'name' => 'Caméra ' . $room->room_name,
+                'room_name' => $room->room_name,
+                'is_on' => false,
+                'battery_level' => rand(20, 100)
+            ]);
         }
+
+        // Création des distributeurs de café (seulement dans le hall)
+        CoffeeMachine::create([
+            'name' => 'Distributeur Hall Principal 1',
+            'room_name' => 'Hall Principal',
+            'is_on' => true,
+            'products' => [
+                'expresso' => ['price' => 1.00, 'quantity' => rand(50, 100)],
+                'double_expresso' => ['price' => 1.50, 'quantity' => rand(50, 100)],
+                'cafe_noisette' => ['price' => 1.20, 'quantity' => rand(50, 100)],
+                'cafe_latte' => ['price' => 1.80, 'quantity' => rand(50, 100)],
+                'cafe_caramel' => ['price' => 2.00, 'quantity' => rand(50, 100)]
+            ]
+        ]);
+
+        CoffeeMachine::create([
+            'name' => 'Distributeur Hall Principal 2',
+            'room_name' => 'Hall Principal',
+            'is_on' => true,
+            'products' => [
+                'expresso' => ['price' => 1.00, 'quantity' => rand(50, 100)],
+                'double_expresso' => ['price' => 1.50, 'quantity' => rand(50, 100)],
+                'cafe_noisette' => ['price' => 1.20, 'quantity' => rand(50, 100)],
+                'cafe_latte' => ['price' => 1.80, 'quantity' => rand(50, 100)],
+                'cafe_caramel' => ['price' => 2.00, 'quantity' => rand(50, 100)]
+            ]
+        ]);
     }
 } 

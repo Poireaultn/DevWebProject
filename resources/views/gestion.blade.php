@@ -96,6 +96,26 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Caméras</h5>
+                    <p class="card-text">Gérez les caméras : allumage/extinction et surveillance de la batterie.</p>
+                    <a href="{{ route('cameras.index') }}" class="btn btn-primary">Gérer les caméras</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Distributeurs de Café</h5>
+                    <p class="card-text">Gérez les produits, les prix et les stocks des distributeurs de café.</p>
+                    <a href="{{ route('coffee_machines.index') }}" class="btn btn-primary">Gérer les distributeurs</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection 

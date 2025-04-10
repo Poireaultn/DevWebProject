@@ -21,13 +21,18 @@ class ProjectorController extends Controller
 
     public function update(Request $request, Projector $projector)
     {
-        $validated = $request->validate([
-            'is_on' => 'boolean',
-            'source' => 'string',
-            'brightness' => 'integer|min:0|max:100'
-        ]);
+        // Gérer la case à cocher is_on
+        $projector->is_on = $request->has('is_on');
+        
+        // Gérer les autres champs
+        if ($request->filled('source')) {
+            $projector->source = $request->source;
+        }
+        if ($request->filled('brightness')) {
+            $projector->brightness = $request->brightness;
+        }
 
-        $projector->update($validated);
+        $projector->save();
 
         return redirect()->route('projectors.manage')
             ->with('success', 'Vidéoprojecteur mis à jour avec succès');
