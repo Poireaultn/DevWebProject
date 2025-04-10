@@ -1,118 +1,77 @@
-# Projet Web - Site de Gestion
+# Projet Web - Gestion des Équipements
 
-Un site web moderne développé avec Laravel pour la gestion et l'administration de contenu.
+## Installation rapide
 
-## Installation Rapide
+Si le projet est déjà installé avec toutes les dépendances, voici les commandes essentielles pour démarrer :
 
-1. Cloner le projet :
 ```bash
-git clone https://github.com/Poireaultn/DevWebProject.git
-cd DevWebProject
-```
+# Mettre à jour la base de données
+php artisan migrate
 
-2. Installer les dépendances :
-```bash
-composer install
-npm install
-```
+# Remplir la base de données avec les données de test
+php artisan db:seed
 
-3. Configurer l'environnement :
-```bash
-cp .env.example .env
-php artisan key:generate
-```
-
-4. Configurer la base de données dans le fichier `.env` :
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=projetweb
-DB_USERNAME=votre_utilisateur
-DB_PASSWORD=votre_mot_de_passe
-```
-
-5. Créer la base de données :
-```sql
-CREATE DATABASE projetweb;
-```
-
-6. Initialiser la base de données avec les données de test :
-```bash
-php artisan migrate:fresh --seed
-```
-
-7. Démarrer le serveur :
-```bash
+# Lancer le serveur de développement
 php artisan serve
 ```
 
-L'application sera accessible à l'adresse : http://localhost:8000
+Le site sera accessible à l'adresse : http://127.0.0.1:8000
+
+## Installation complète
+
+Si vous clonez le projet pour la première fois :
+
+```bash
+# Installer les dépendances PHP
+composer install
+
+# Copier le fichier d'environnement
+cp .env.example .env
+
+# Générer la clé d'application
+php artisan key:generate
+
+# Configurer la base de données dans le fichier .env
+
+# Exécuter les migrations
+php artisan migrate
+
+# Remplir la base de données
+php artisan db:seed
+
+# Installer les dépendances Node.js
+npm install
+
+# Compiler les assets
+npm run dev
+
+# Lancer le serveur
+php artisan serve
+```
 
 ## Fonctionnalités
 
-* Gestion des objets connectés :
-  * Volets roulants
-  * Chauffage central
-  * Éclairage
-  * Détecteurs de fumée
-  * Panneaux d'affichage
-  * Vidéoprojecteurs
+Le projet permet de gérer différents équipements :
+- Lumières
+- Vidéoprojecteurs
+- Détecteurs de fumée
+- Panneaux d'affichage
+- Chauffages
+- Volets
+- Occupation des salles
+- Réservations de salles
+- Emploi du temps
+- Parking
+- Parking à vélos
 
-* Gestion des espaces :
-  * Occupation des salles
-  * Réservation de salles
-  * Parking voitures
-  * Parking vélos
+## Routes principales
 
-* Visualisation en temps réel :
-  * État des objets connectés
-  * Occupation des espaces
-  * Planning des salles
+- `/visualisation` : Vue d'ensemble des équipements
+- `/gestion` : Interface de gestion des équipements
+- `/information` : Informations générales
+- `/administration` : Interface d'administration
 
 ## Structure du Projet
 
 * `app/` - Contient la logique de l'application
-* `resources/` - Contient les vues et les assets
-* `routes/` - Définit les routes de l'application
-* `database/` - Contient les migrations et les seeders
-* `public/` - Contient les fichiers accessibles publiquement
-
-## Utilisateur de Test
-
-Un utilisateur de test est créé automatiquement :
-- Email : test@example.com
-- Mot de passe : password
-
-## Dépannage
-
-Si vous rencontrez des problèmes :
-
-1. Vider les caches :
-```bash
-php artisan cache:clear
-php artisan config:clear
-php artisan view:clear
-```
-
-2. Vérifier les migrations :
-```bash
-php artisan migrate:status
-```
-
-3. Réinitialiser la base de données :
-```bash
-php artisan migrate:fresh --seed
-```
-
-## Contribution
-
-1. Fork le projet
-2. Créer une branche pour votre fonctionnalité
-3. Commiter vos changements
-4. Pousser vers la branche
-5. Ouvrir une Pull Request
-
-## Licence
-
-Ce projet est sous licence MIT.
+* `resources/`
