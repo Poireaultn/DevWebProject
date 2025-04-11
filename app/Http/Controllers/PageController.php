@@ -12,7 +12,10 @@ class PageController extends Controller
 {
     public function welcome()
     {
-        return view('welcome');
+        if (auth()->check()) {
+            return view('welcome');
+        }
+        return view('welcome_guest');
     }
 
     public function information()
