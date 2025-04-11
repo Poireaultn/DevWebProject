@@ -40,8 +40,8 @@ class RoomReservationController extends Controller
 
         // Vérifier si la salle est libre
         $room = RoomOccupancy::where('room_name', $request->room_name)->first();
-        if (!$room || $room->people_count > 0) {
-            return redirect()->back()->with('error', 'La salle n\'est pas disponible.');
+        if (!$room) {
+            return redirect()->back()->with('error', 'La salle n\'existe pas.');
         }
 
         // Définir l'heure de fin à exactement 1 heure après l'heure de début
@@ -63,7 +63,7 @@ class RoomReservationController extends Controller
         // Créer la réservation
         RoomReservation::create([
             'room_name' => $request->room_name,
-            'reserved_by' => auth()->user()->name ?? 'Utilisateur',
+            'reserved_by' => auth()->user()->name,
             'purpose' => $request->purpose,
             'start_time' => $start_time,
             'end_time' => $end_time,
