@@ -22,9 +22,11 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('visualisation') ? 'active' : '' }}" href="/visualisation">Visualisation</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->is('gestion') ? 'active' : '' }}" href="/gestion">Gestion</a>
-                    </li>
+                    @if(auth()->check())
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('gestion') ? 'active' : '' }}" href="/gestion">Gestion</a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('administration') ? 'active' : '' }}" href="/administration">Administration</a>
                     </li>
