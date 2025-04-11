@@ -9,14 +9,12 @@ class ProjectorController extends Controller
 {
     public function manage()
     {
-        $projectors = Projector::all();
-        return view('projectors.index', compact('projectors'));
+        return view('projectors.manage');
     }
 
     public function show()
     {
-        $projectors = Projector::all();
-        return view('projectors.show', compact('projectors'));
+        return view('projectors.show');
     }
 
     public function update(Request $request, Projector $projector)
@@ -36,5 +34,11 @@ class ProjectorController extends Controller
 
         return redirect()->route('projectors.manage')
             ->with('success', 'Vidéoprojecteur mis à jour avec succès');
+    }
+
+    public function toggle(Request $request, $id)
+    {
+        // Logique pour activer/désactiver un vidéoprojecteur
+        return response()->json(['success' => true]);
     }
 } 

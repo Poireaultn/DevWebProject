@@ -18,6 +18,8 @@ use App\Http\Controllers\CameraController;
 use App\Http\Controllers\CoffeeMachineController;
 use App\Http\Controllers\GestionController;
 use App\Http\Controllers\DistributorController;
+use App\Http\Controllers\BlindController;
+use App\Http\Controllers\HeatingController;
 
 // Routes publiques
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
@@ -46,8 +48,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/heaters/{heater}/update', [HeaterController::class, 'update'])->name('heaters.update');
 
     // Routes pour les lumières
-    Route::get('/visualisation/lights', [LightController::class, 'show'])->name('lights.index');
-    Route::get('/gestion/lights', [LightController::class, 'index'])->name('lights.manage');
+    Route::get('/visualisation/lights', [LightController::class, 'show'])->name('lights.show');
+    Route::get('/gestion/lights', [LightController::class, 'index'])->name('lights.index');
     Route::post('/lights/{light}/toggle', [LightController::class, 'toggle'])->name('lights.toggle');
 
     // Routes pour l'occupation des salles
@@ -74,25 +76,30 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/gestion/bike-parking', [BikeParkingController::class, 'manage'])->name('bike_parking.manage');
     Route::post('/bike-parking/toggle', [BikeParkingController::class, 'toggle'])->name('bike_parking.toggle');
 
-    // Routes pour les panneaux d'affichage
-    Route::get('/visualisation/display-panels', [DisplayPanelController::class, 'show'])->name('display_panels.show');
-    Route::get('/gestion/display-panels', [DisplayPanelController::class, 'manage'])->name('display_panels.manage');
-    Route::put('/display-panels/{panel}', [DisplayPanelController::class, 'update'])->name('display_panels.update');
-
-    // Routes pour les détecteurs de fumée
-    Route::get('/visualisation/smoke-detectors', [SmokeDetectorController::class, 'show'])->name('smoke_detectors.show');
-    Route::get('/gestion/smoke-detectors', [SmokeDetectorController::class, 'manage'])->name('smoke_detectors.manage');
-    Route::put('/smoke-detectors/{detector}', [SmokeDetectorController::class, 'update'])->name('smoke_detectors.update');
-
-    // Routes pour les vidéoprojecteurs
-    Route::get('/visualisation/projectors', [ProjectorController::class, 'show'])->name('projectors.show');
-    Route::get('/gestion/projectors', [ProjectorController::class, 'manage'])->name('projectors.manage');
-    Route::put('/projectors/{projector}', [ProjectorController::class, 'update'])->name('projectors.update');
-
     // Routes pour les caméras
     Route::get('/visualisation/cameras', [CameraController::class, 'show'])->name('cameras.show');
     Route::get('/gestion/cameras', [CameraController::class, 'index'])->name('cameras.index');
     Route::post('/cameras/{camera}/toggle', [CameraController::class, 'toggle'])->name('cameras.toggle');
+
+    // Routes pour les détecteurs de fumée
+    Route::get('/visualisation/smoke-detectors', [SmokeDetectorController::class, 'show'])->name('smoke_detectors.show');
+    Route::get('/gestion/smoke-detectors', [SmokeDetectorController::class, 'index'])->name('smoke_detectors.index');
+    Route::post('/smoke-detectors/{detector}/toggle', [SmokeDetectorController::class, 'toggle'])->name('smoke_detectors.toggle');
+
+    // Routes pour les panneaux d'affichage
+    Route::get('/visualisation/display-panels', [DisplayPanelController::class, 'show'])->name('display_panels.show');
+    Route::get('/gestion/display-panels', [DisplayPanelController::class, 'index'])->name('display_panels.index');
+    Route::post('/display-panels/{panel}/toggle', [DisplayPanelController::class, 'toggle'])->name('display_panels.toggle');
+
+    // Routes pour les volets
+    Route::get('/visualisation/blinds', [BlindController::class, 'show'])->name('blinds.show');
+    Route::get('/gestion/blinds', [BlindController::class, 'index'])->name('blinds.index');
+    Route::post('/blinds/{blind}/toggle', [BlindController::class, 'toggle'])->name('blinds.toggle');
+
+    // Routes pour le chauffage
+    Route::get('/visualisation/heating', [HeatingController::class, 'show'])->name('heating.show');
+    Route::get('/gestion/heating', [HeatingController::class, 'index'])->name('heating.index');
+    Route::post('/heating/{heater}/toggle', [HeatingController::class, 'toggle'])->name('heating.toggle');
 
     // Routes pour les distributeurs
     Route::get('/visualisation/distributors', [DistributorController::class, 'show'])->name('distributors.show');
@@ -104,6 +111,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/gestion/coffee-machines', [CoffeeMachineController::class, 'index'])->name('coffee_machines.index');
     Route::post('/coffee-machines/{coffeeMachine}/toggle', [CoffeeMachineController::class, 'toggle'])->name('coffee_machines.toggle');
     Route::post('/coffee-machines/{coffeeMachine}/update-product', [CoffeeMachineController::class, 'updateProduct'])->name('coffee_machines.update_product');
+
+    // Routes pour les vidéoprojecteurs
+    Route::get('/visualisation/projectors', [ProjectorController::class, 'show'])->name('projectors.show');
+    Route::get('/gestion/projectors', [ProjectorController::class, 'manage'])->name('projectors.manage');
+    Route::post('/projectors/{projector}/toggle', [ProjectorController::class, 'toggle'])->name('projectors.toggle');
 });
 
 // Supprimer la route resource qui peut causer des conflits

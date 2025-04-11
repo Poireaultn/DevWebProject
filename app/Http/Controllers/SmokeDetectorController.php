@@ -15,8 +15,12 @@ class SmokeDetectorController extends Controller
 
     public function show()
     {
-        $detectors = SmokeDetector::all();
-        return view('smoke_detectors.show', compact('detectors'));
+        return view('smoke_detectors.show');
+    }
+
+    public function index()
+    {
+        return view('smoke_detectors.index');
     }
 
     public function update(Request $request, SmokeDetector $detector)
@@ -29,5 +33,11 @@ class SmokeDetectorController extends Controller
 
         return redirect()->route('smoke_detectors.manage')
             ->with('success', 'Détecteur de fumée mis à jour avec succès');
+    }
+
+    public function toggle(Request $request, $id)
+    {
+        // Logique pour activer/désactiver un détecteur
+        return response()->json(['success' => true]);
     }
 } 
