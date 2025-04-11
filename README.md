@@ -75,3 +75,17 @@ Le projet permet de gérer différents équipements :
 
 * `app/` - Contient la logique de l'application
 * `resources/`
+
+## Initialisation de la base de données
+
+Après avoir récupéré le code depuis GitHub, exécutez les commandes suivantes pour initialiser la base de données :
+
+1. Créer la base de données :
+```sql
+CREATE DATABASE projetweb;
+```
+
+2. Importer les données :
+```bash
+mysql -u root -p projetweb < database/projetweb.sql
+```
