@@ -29,6 +29,7 @@
                             </div>
                         </div>
                     </div>
+                    @if(Auth::user()->role === 'professeur' || Auth::user()->role === 'etudiant')
                     <div class="col-md-6 mb-4">
                         <div class="card h-100">
                             <div class="card-body">
@@ -38,6 +39,8 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+                    @if(Auth::user()->role === 'admin')
                     <div class="col-md-6 mb-4">
                         <div class="card h-100">
                             <div class="card-body">
@@ -47,8 +50,9 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
-                </div>
+            </div>
         </div>
     </div>
 </div>

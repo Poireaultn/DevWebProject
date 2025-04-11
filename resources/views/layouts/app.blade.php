@@ -30,7 +30,7 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('visualisation') ? 'active' : '' }}" href="/visualisation">Visualisation</a>
                     </li>
-                    @if(Auth::user()->role !== 'etudiant')
+                    @if(Auth::user()->role === 'admin')
                     <li class="nav-item">
                         <a class="nav-link {{ request()->is('administration') ? 'active' : '' }}" href="/administration">Administration</a>
                     </li>
