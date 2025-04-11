@@ -35,6 +35,11 @@
                         <a class="nav-link {{ request()->is('administration') ? 'active' : '' }}" href="/administration">Administration</a>
                     </li>
                     @endif
+                    @if(Auth::user()->role === 'professeur' || Auth::user()->role === 'etudiant')
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('gestion') ? 'active' : '' }}" href="/gestion">Gestion</a>
+                    </li>
+                    @endif
                     @endauth
                 </ul>
                 <ul class="navbar-nav ms-auto">

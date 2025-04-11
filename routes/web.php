@@ -16,6 +16,8 @@ use App\Http\Controllers\SmokeDetectorController;
 use App\Http\Controllers\ProjectorController;
 use App\Http\Controllers\CameraController;
 use App\Http\Controllers\CoffeeMachineController;
+use App\Http\Controllers\GestionController;
+use App\Http\Controllers\DistributorController;
 
 // Routes publiques
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
@@ -29,7 +31,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Routes protégées par authentification
 Route::middleware(['auth'])->group(function () {
     Route::get('/visualisation', [PageController::class, 'visualisation'])->name('visualisation');
-    Route::get('/gestion', [PageController::class, 'gestion'])->name('gestion');
+    Route::get('/gestion', [GestionController::class, 'index'])->name('gestion.index');
     Route::get('/administration', [PageController::class, 'administration'])->name('administration');
 
     // Routes pour les volets
@@ -91,6 +93,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/visualisation/cameras', [CameraController::class, 'show'])->name('cameras.show');
     Route::get('/gestion/cameras', [CameraController::class, 'index'])->name('cameras.index');
     Route::post('/cameras/{camera}/toggle', [CameraController::class, 'toggle'])->name('cameras.toggle');
+
+    // Routes pour les distributeurs
+    Route::get('/visualisation/distributors', [DistributorController::class, 'show'])->name('distributors.show');
+    Route::get('/gestion/distributors', [DistributorController::class, 'index'])->name('distributors.index');
+    Route::post('/distributors/{distributor}/toggle', [DistributorController::class, 'toggle'])->name('distributors.toggle');
 
     // Routes pour les distributeurs de café
     Route::get('/visualisation/coffee-machines', [CoffeeMachineController::class, 'show'])->name('coffee_machines.show');
