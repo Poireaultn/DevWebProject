@@ -32,7 +32,7 @@ class ParkingController extends Controller
 
     public function manage()
     {
-        $parking = Parking::all();
-        return view('gestion.parking', compact('parking'));
+        $parking = Parking::first();
+        return view('parking.manage', compact('parking'));
     }
 } 
