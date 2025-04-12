@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Lumières Connectées</h5>
                     <p class="card-text">Visualisez l'état de l'éclairage dans chaque salle de l'école.</p>
-                    <a href="{{ route('lights.index') }}" class="btn btn-primary">Voir les lumières</a>
+                    <a href="{{ route('lights.show') }}" class="btn btn-primary">Voir les lumières</a>
                 </div>
             </div>
         </div>

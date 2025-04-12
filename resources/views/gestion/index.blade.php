@@ -55,18 +55,6 @@
         </div>
         @endif
 
-        @if($showDistributor)
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Distributeur</h5>
-                    <p class="card-text">Gérer les distributeurs</p>
-                    <a href="{{ route('distributors.index') }}" class="btn btn-primary">Accéder</a>
-                </div>
-            </div>
-        </div>
-        @endif
-
         @if($showCoffee)
         <div class="col-md-4 mb-4">
             <div class="card">
@@ -97,7 +85,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Détecteurs de fumée</h5>
                     <p class="card-text">Gérer les détecteurs de fumée</p>
-                    <a href="{{ route('smoke_detectors.index') }}" class="btn btn-primary">Accéder</a>
+                    <a href="{{ route('smoke_detectors.manage') }}" class="btn btn-primary">Accéder</a>
                 </div>
             </div>
         </div>
@@ -109,7 +97,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Panneaux d'affichage</h5>
                     <p class="card-text">Gérer les panneaux d'affichage</p>
-                    <a href="{{ route('display_panels.index') }}" class="btn btn-primary">Accéder</a>
+                    <a href="{{ route('display_panels.manage') }}" class="btn btn-primary">Accéder</a>
                 </div>
             </div>
         </div>
@@ -121,7 +109,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Volets</h5>
                     <p class="card-text">Gérer les volets automatiques</p>
-                    <a href="{{ route('blinds.index') }}" class="btn btn-primary">Accéder</a>
+                    <a href="{{ route('shutters.index') }}" class="btn btn-primary">Accéder</a>
                 </div>
             </div>
         </div>
@@ -145,7 +133,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Chauffage</h5>
                     <p class="card-text">Gérer le système de chauffage</p>
-                    <a href="{{ route('heating.index') }}" class="btn btn-primary">Accéder</a>
+                    <a href="{{ route('heaters.index') }}" class="btn btn-primary">Accéder</a>
                 </div>
             </div>
         </div>

@@ -151,6 +151,6 @@ class RoomOccupancyController extends Controller
             ->orderBy('start_time', 'asc')
             ->get();
             
-        return view('gestion.rooms', compact('rooms', 'reservations'));
+        return view('visualisation.rooms', compact('rooms', 'reservations'));
     }
 } 

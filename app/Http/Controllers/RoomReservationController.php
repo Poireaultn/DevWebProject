@@ -32,6 +32,11 @@ class RoomReservationController extends Controller
 
     public function store(Request $request)
     {
+        // Vérifier que l'utilisateur est connecté et a le rôle approprié
+        if (!Auth::check()) {
+            return redirect()->back()->with('error', 'Vous devez être connecté pour réserver une salle.');
+        }
+
         $request->validate([
             'room_name' => 'required|string',
             'purpose' => 'required|string',
@@ -75,6 +80,11 @@ class RoomReservationController extends Controller
 
     public function cancel(RoomReservation $reservation)
     {
+        // Vérifier que l'utilisateur est admin ou professeur
+        if (!Auth::check() || !in_array(Auth::user()->role, ['admin', 'professeur'])) {
+            return redirect()->back()->with('error', 'Vous n\'avez pas les droits pour annuler une réservation.');
+        }
+
         $reservation->is_active = false;
         $reservation->save();
 
