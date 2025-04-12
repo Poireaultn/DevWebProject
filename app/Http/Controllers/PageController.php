@@ -23,6 +23,11 @@ class PageController extends Controller
         return view('information');
     }
 
+    public function about()
+    {
+        return view('information.about');
+    }
+
     public function visualisation()
     {
         $shutters = Shutter::all();

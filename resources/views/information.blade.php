@@ -14,10 +14,12 @@
         <div class="row mt-4">
             <div class="col-md-6">
                 <div class="card mb-3">
-                    <div class="card-body">
-                        <h4>À propos de nous</h4>
-                        <p>Découvrez notre histoire et notre mission.</p>
-                    </div>
+                    <a href="{{ route('information.about') }}" class="text-decoration-none text-dark">
+                        <div class="card-body">
+                            <h4>À propos de nous</h4>
+                            <p>Découvrez notre histoire et notre mission.</p>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="col-md-6">

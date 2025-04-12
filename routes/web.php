@@ -26,26 +26,27 @@ use App\Http\Controllers\EventController;
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 Route::get('/information', [PageController::class, 'information'])->name('information');
 
+// Routes d'information
+Route::prefix('information')->group(function () {
+    // Route à propos
+    Route::get('/about', [PageController::class, 'about'])->name('information.about');
+    
+    // Routes des événements
+    Route::get('/events/create', [EventController::class, 'create'])
+        ->middleware(['auth', 'checkRole:admin,professeur'])
+        ->name('information.events.create');
+    Route::get('/events', [EventController::class, 'index'])->name('information.events.index');
+    Route::post('/events', [EventController::class, 'store'])->middleware(['auth', 'checkRole:admin,professeur'])->name('information.events.store');
+    Route::get('/events/{event}', [EventController::class, 'show'])->name('information.events.show');
+    Route::get('/events/{event}/edit', [EventController::class, 'edit'])->middleware(['auth', 'checkRole:admin,professeur'])->name('information.events.edit');
+    Route::put('/events/{event}', [EventController::class, 'update'])->middleware(['auth', 'checkRole:admin,professeur'])->name('information.events.update');
+    Route::delete('/events/{event}', [EventController::class, 'destroy'])->middleware(['auth', 'checkRole:admin,professeur'])->name('information.events.destroy');
+});
+
 // Routes d'authentification
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
-// Routes des événements
-Route::prefix('information')->group(function () {
-    // Route de création avant la route avec paramètre
-    Route::get('events/create', [EventController::class, 'create'])
-        ->middleware(['auth', 'checkRole:admin,professeur'])
-        ->name('information.events.create');
-        
-    // Routes CRUD des événements
-    Route::get('events', [EventController::class, 'index'])->name('information.events.index');
-    Route::post('events', [EventController::class, 'store'])->middleware(['auth', 'checkRole:admin,professeur'])->name('information.events.store');
-    Route::get('events/{event}', [EventController::class, 'show'])->name('information.events.show');
-    Route::get('events/{event}/edit', [EventController::class, 'edit'])->middleware(['auth', 'checkRole:admin,professeur'])->name('information.events.edit');
-    Route::put('events/{event}', [EventController::class, 'update'])->middleware(['auth', 'checkRole:admin,professeur'])->name('information.events.update');
-    Route::delete('events/{event}', [EventController::class, 'destroy'])->middleware(['auth', 'checkRole:admin,professeur'])->name('information.events.destroy');
-});
 
 // Routes protégées par authentification
 Route::middleware(['auth'])->group(function () {
