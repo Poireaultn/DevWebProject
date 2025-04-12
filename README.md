@@ -33,8 +33,10 @@ cp .env.example .env
 ```
 
 ### Modifier le fichier env pour ajouter vos identifiants sql
+```
 DB_USERNAME=[username_sql]
 DB_PASSWORD=[mdp_sql]
+```
 
 ### Générer la clé d'application
 ```bash
