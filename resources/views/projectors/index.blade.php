@@ -53,6 +53,9 @@
                     </div>
                 </div>
             </div>
+            <div class="mt-3">
+                <a href="{{ route('gestion.index') }}" class="btn btn-secondary">Retour</a>
+            </div>
         @empty
             <div class="col-12">
                 <div class="alert alert-info">

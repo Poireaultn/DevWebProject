@@ -62,9 +62,8 @@
                     </div>
                 </div>
             </div>
-
             <div class="mt-3">
-                <a href="{{ route('visualisation') }}" class="btn btn-secondary">Retour</a>
+                <a href="{{ route('visualisation.index') }}" class="btn btn-secondary">Retour</a>
             </div>
         </div>
     </div>

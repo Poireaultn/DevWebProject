@@ -9,18 +9,20 @@ class ProjectorController extends Controller
 {
     public function manage()
     {
-        return view('projectors.manage');
+        $projectors = Projector::all();
+        return view('projectors.manage', compact('projectors'));
     }
 
     public function show()
     {
-        return view('projectors.show');
+        $projectors = Projector::all();
+        return view('projectors.show', compact('projectors'));
     }
 
     public function update(Request $request, Projector $projector)
     {
-        // Gérer la case à cocher is_on
-        $projector->is_on = $request->has('is_on');
+        // Conserver l'état actuel du projecteur
+        $currentState = $projector->is_on;
         
         // Gérer les autres champs
         if ($request->filled('source')) {
@@ -29,7 +31,10 @@ class ProjectorController extends Controller
         if ($request->filled('brightness')) {
             $projector->brightness = $request->brightness;
         }
-
+        
+        // Restaurer l'état du projecteur
+        $projector->is_on = $currentState;
+        
         $projector->save();
 
         return redirect()->route('projectors.manage')
@@ -38,7 +43,11 @@ class ProjectorController extends Controller
 
     public function toggle(Request $request, $id)
     {
-        // Logique pour activer/désactiver un vidéoprojecteur
-        return response()->json(['success' => true]);
+        $projector = Projector::findOrFail($id);
+        $projector->is_on = !$projector->is_on;
+        $projector->save();
+        
+        return redirect()->route('projectors.manage')
+            ->with('success', 'État du vidéoprojecteur modifié avec succès');
     }
 } 

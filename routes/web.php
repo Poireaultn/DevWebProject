@@ -50,7 +50,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Routes protégées par authentification
 Route::middleware(['auth'])->group(function () {
-    Route::get('/visualisation', [PageController::class, 'visualisation'])->name('visualisation');
+    Route::get('/visualisation', [PageController::class, 'visualisation'])->name('visualisation.index');
     Route::get('/gestion', [GestionController::class, 'index'])->name('gestion.index');
     Route::get('/administration', [PageController::class, 'administration'])->name('administration');
 
@@ -101,23 +101,15 @@ Route::middleware(['auth'])->group(function () {
 
     // Routes pour les détecteurs de fumée
     Route::get('/visualisation/smoke-detectors', [SmokeDetectorController::class, 'show'])->name('smoke_detectors.show');
-    Route::get('/gestion/smoke-detectors', [SmokeDetectorController::class, 'index'])->name('smoke_detectors.index');
+    Route::get('/gestion/smoke-detectors', [SmokeDetectorController::class, 'manage'])->name('smoke_detectors.manage');
     Route::post('/smoke-detectors/{detector}/toggle', [SmokeDetectorController::class, 'toggle'])->name('smoke_detectors.toggle');
+    Route::put('/smoke-detectors/{detector}', [SmokeDetectorController::class, 'update'])->name('smoke_detectors.update');
 
     // Routes pour les panneaux d'affichage
     Route::get('/visualisation/display-panels', [DisplayPanelController::class, 'show'])->name('display_panels.show');
-    Route::get('/gestion/display-panels', [DisplayPanelController::class, 'index'])->name('display_panels.index');
+    Route::get('/gestion/display-panels', [DisplayPanelController::class, 'manage'])->name('display_panels.manage');
     Route::post('/display-panels/{panel}/toggle', [DisplayPanelController::class, 'toggle'])->name('display_panels.toggle');
-
-    // Routes pour les volets
-    Route::get('/visualisation/blinds', [BlindController::class, 'show'])->name('blinds.show');
-    Route::get('/gestion/blinds', [BlindController::class, 'index'])->name('blinds.index');
-    Route::post('/blinds/{blind}/toggle', [BlindController::class, 'toggle'])->name('blinds.toggle');
-
-    // Routes pour le chauffage
-    Route::get('/visualisation/heating', [HeatingController::class, 'show'])->name('heating.show');
-    Route::get('/gestion/heating', [HeatingController::class, 'index'])->name('heating.index');
-    Route::post('/heating/{heater}/toggle', [HeatingController::class, 'toggle'])->name('heating.toggle');
+    Route::put('/display-panels/{panel}', [DisplayPanelController::class, 'update'])->name('display_panels.update');
 
     // Routes pour les distributeurs
     Route::get('/visualisation/distributors', [DistributorController::class, 'show'])->name('distributors.show');
@@ -134,6 +126,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/visualisation/projectors', [ProjectorController::class, 'show'])->name('projectors.show');
     Route::get('/gestion/projectors', [ProjectorController::class, 'manage'])->name('projectors.manage');
     Route::post('/projectors/{projector}/toggle', [ProjectorController::class, 'toggle'])->name('projectors.toggle');
+    Route::put('/projectors/{projector}', [ProjectorController::class, 'update'])->name('projectors.update');
 });
 
 // Supprimer la route resource qui peut causer des conflits

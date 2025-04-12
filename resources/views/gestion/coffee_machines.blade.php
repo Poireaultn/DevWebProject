@@ -74,5 +74,9 @@
         </div>
         @endforeach
     </div>
+
+    <div class="mt-3">
+        <a href="{{ route('gestion.index') }}" class="btn btn-secondary">Retour</a>
+    </div>
 </div>
 @endsection 

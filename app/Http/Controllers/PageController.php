@@ -42,7 +42,7 @@ class PageController extends Controller
             $bikeParkings = BikeParking::all();
         }
         
-        return view('visualisation', compact('shutters', 'parkings', 'bikeParkings'));
+        return view('visualisation.index', compact('shutters', 'parkings', 'bikeParkings'));
     }
 
     public function gestion()
