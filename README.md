@@ -21,32 +21,63 @@ Le site sera accessible à l'adresse : http://127.0.0.1:8000
 
 Si vous clonez le projet pour la première fois :
 
+
+### Installer les dépendances PHP
 ```bash
-# Installer les dépendances PHP
 composer install
+```
 
-# Copier le fichier d'environnement
+### Copier le fichier d'environnement
+```bash
 cp .env.example .env
+```
 
-# Générer la clé d'application
+### Modifier le fichier env pour ajouter vos identifiants sql
+DB_USERNAME=[username_sql]
+DB_PASSWORD=[mdp_sql]
+
+### Générer la clé d'application
+```bash
 php artisan key:generate
+```
 
-# Configurer la base de données dans le fichier .env
-
-# Exécuter les migrations
+### Exécuter les migrations
+```bash
 php artisan migrate
+```
 
-# Remplir la base de données
+### Remplir la base de données
+```bash
 php artisan db:seed
+```
 
-# Installer les dépendances Node.js
+### Installer les dépendances Node.js
+```bash
 npm install
+```
 
-# Compiler les assets
+### Compiler les assets
+```bash
 npm run dev
+```
 
-# Lancer le serveur
+### Lancer le serveur
+```bash
 php artisan serve
+```
+
+## Initialisation de la base de données
+
+Après avoir récupéré le code depuis GitHub, exécutez les commandes suivantes pour initialiser la base de données :
+
+1. Créer la base de données en vous connectant à votre sql :
+```sql
+CREATE DATABASE projetweb;
+```
+
+2. Importer les données :
+```bash
+mysql -u root -p projetweb < database/projetweb.sql
 ```
 
 ## Fonctionnalités
@@ -75,17 +106,3 @@ Le projet permet de gérer différents équipements :
 
 * `app/` - Contient la logique de l'application
 * `resources/`
-
-## Initialisation de la base de données
-
-Après avoir récupéré le code depuis GitHub, exécutez les commandes suivantes pour initialiser la base de données :
-
-1. Créer la base de données :
-```sql
-CREATE DATABASE projetweb;
-```
-
-2. Importer les données :
-```bash
-mysql -u root -p projetweb < database/projetweb.sql
-```
