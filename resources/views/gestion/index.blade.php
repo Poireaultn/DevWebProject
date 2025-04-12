@@ -7,6 +7,54 @@
     <h1 class="mb-4">Gestion</h1>
     
     <div class="row">
+        @if($showBlinds)
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Volets</h5>
+                    <p class="card-text">Gérer les volets automatiques</p>
+                    <a href="{{ route('shutters.index') }}" class="btn btn-primary">Accéder</a>
+                </div>
+            </div>
+        </div>
+        @endif
+
+        @if($showHeating)
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Chauffage</h5>
+                    <p class="card-text">Gérer le système de chauffage</p>
+                    <a href="{{ route('heaters.index') }}" class="btn btn-primary">Accéder</a>
+                </div>
+            </div>
+        </div>
+        @endif
+
+        @if($showLights)
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Éclairage</h5>
+                    <p class="card-text">Gérer l'éclairage intelligent</p>
+                    <a href="{{ route('lights.index') }}" class="btn btn-primary">Accéder</a>
+                </div>
+            </div>
+        </div>
+        @endif
+
+        @if($showRoom)
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Salles</h5>
+                    <p class="card-text">Réserver une salle</p>
+                    <a href="{{ route('rooms.manage') }}" class="btn btn-primary">Accéder</a>
+                </div>
+            </div>
+        </div>
+        @endif
+
         @if($showParking)
         <div class="col-md-4 mb-4">
             <div class="card">
@@ -31,6 +79,18 @@
         </div>
         @endif
 
+        @if($showDisplayPanels)
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Panneaux d'affichage</h5>
+                    <p class="card-text">Gérer les panneaux d'affichage</p>
+                    <a href="{{ route('display_panels.manage') }}" class="btn btn-primary">Accéder</a>
+                </div>
+            </div>
+        </div>
+        @endif
+
         @if($showProjector)
         <div class="col-md-4 mb-4">
             <div class="card">
@@ -41,19 +101,7 @@
                 </div>
             </div>
         </div>
-        @endif
-
-        @if($showRoom)
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Salles</h5>
-                    <p class="card-text">Réserver une salle</p>
-                    <a href="{{ route('rooms.manage') }}" class="btn btn-primary">Accéder</a>
-                </div>
-            </div>
-        </div>
-        @endif
+        @endif        
 
         @if($showCoffee)
         <div class="col-md-4 mb-4">
@@ -86,54 +134,6 @@
                     <h5 class="card-title">Détecteurs de fumée</h5>
                     <p class="card-text">Gérer les détecteurs de fumée</p>
                     <a href="{{ route('smoke_detectors.manage') }}" class="btn btn-primary">Accéder</a>
-                </div>
-            </div>
-        </div>
-        @endif
-
-        @if($showDisplayPanels)
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Panneaux d'affichage</h5>
-                    <p class="card-text">Gérer les panneaux d'affichage</p>
-                    <a href="{{ route('display_panels.manage') }}" class="btn btn-primary">Accéder</a>
-                </div>
-            </div>
-        </div>
-        @endif
-
-        @if($showBlinds)
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Volets</h5>
-                    <p class="card-text">Gérer les volets automatiques</p>
-                    <a href="{{ route('shutters.index') }}" class="btn btn-primary">Accéder</a>
-                </div>
-            </div>
-        </div>
-        @endif
-
-        @if($showLights)
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Éclairage</h5>
-                    <p class="card-text">Gérer l'éclairage intelligent</p>
-                    <a href="{{ route('lights.index') }}" class="btn btn-primary">Accéder</a>
-                </div>
-            </div>
-        </div>
-        @endif
-
-        @if($showHeating)
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Chauffage</h5>
-                    <p class="card-text">Gérer le système de chauffage</p>
-                    <a href="{{ route('heaters.index') }}" class="btn btn-primary">Accéder</a>
                 </div>
             </div>
         </div>

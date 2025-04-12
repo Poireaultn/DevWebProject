@@ -11,7 +11,7 @@
         <div class="col-md-4 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $shutter->room_name }}</h5>
+                    <h5 class="card-title">{{ $shutter->name }}</h5>
                     <p class="card-text">
                         État: 
                         <span class="badge {{ $shutter->is_open ? 'bg-success' : 'bg-danger' }}">
@@ -22,6 +22,10 @@
             </div>
         </div>
         @endforeach
+    </div>
+
+    <div class="mt-3">
+        <a href="{{ route('visualisation.index') }}" class="btn btn-secondary">Retour</a>
     </div>
 </div>
 @endsection 

@@ -50,7 +50,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Routes protégées par authentification
 Route::middleware(['auth'])->group(function () {
-    Route::get('/visualisation', [PageController::class, 'visualisation'])->name('visualisation');
+    Route::get('/visualisation', [PageController::class, 'visualisation'])->name('visualisation.index');
     Route::get('/gestion', [GestionController::class, 'index'])->name('gestion.index');
     Route::get('/administration', [PageController::class, 'administration'])->name('administration');
 
@@ -110,6 +110,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/gestion/display-panels', [DisplayPanelController::class, 'manage'])->name('display_panels.manage');
     Route::post('/display-panels/{panel}/toggle', [DisplayPanelController::class, 'toggle'])->name('display_panels.toggle');
     Route::put('/display-panels/{panel}', [DisplayPanelController::class, 'update'])->name('display_panels.update');
+
+    // Routes pour les distributeurs
+    Route::get('/visualisation/distributors', [DistributorController::class, 'show'])->name('distributors.show');
+    Route::get('/gestion/distributors', [DistributorController::class, 'index'])->name('distributors.index');
+    Route::post('/distributors/{distributor}/toggle', [DistributorController::class, 'toggle'])->name('distributors.toggle');
 
     // Routes pour les distributeurs de café
     Route::get('/visualisation/coffee-machines', [CoffeeMachineController::class, 'show'])->name('coffee_machines.show');
