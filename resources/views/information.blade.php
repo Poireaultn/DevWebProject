@@ -22,10 +22,12 @@
             </div>
             <div class="col-md-6">
                 <div class="card mb-3">
-                    <div class="card-body">
-                        <h4>Nos services</h4>
-                        <p>Explorez la gamme de services que nous proposons.</p>
-                    </div>
+                    <a href="{{ route('information.events.index') }}" class="text-decoration-none text-dark">
+                        <div class="card-body">
+                            <h4>Événements</h4>
+                            <p>Consultez les actualités et événements de l'école.</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
