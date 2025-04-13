@@ -21,6 +21,7 @@ use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\BlindController;
 use App\Http\Controllers\HeatingController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\AdminController;
 
 // Routes publiques
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
@@ -127,6 +128,41 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/gestion/projectors', [ProjectorController::class, 'manage'])->name('projectors.manage');
     Route::post('/projectors/{projector}/toggle', [ProjectorController::class, 'toggle'])->name('projectors.toggle');
     Route::put('/projectors/{projector}', [ProjectorController::class, 'update'])->name('projectors.update');
+});
+
+// Routes d'administration
+Route::prefix('admin')->middleware(['auth', 'checkRole:admin'])->name('admin.')->group(function () {
+    Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
+    
+    // Gestion des utilisateurs
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/users/create', [AdminController::class, 'createUser'])->name('users.create');
+    Route::post('/users', [AdminController::class, 'storeUser'])->name('users.store');
+    Route::get('/users/{user}/edit', [AdminController::class, 'editUser'])->name('users.edit');
+    Route::put('/users/{user}', [AdminController::class, 'updateUser'])->name('users.update');
+    Route::delete('/users/{user}', [AdminController::class, 'deleteUser'])->name('users.delete');
+
+    // Historiques
+    Route::get('/history/logins', [AdminController::class, 'loginHistory'])->name('history.logins');
+    Route::get('/history/actions', [AdminController::class, 'actionLogs'])->name('history.actions');
+
+    // Gestion des catégories
+    Route::get('/categories', [AdminController::class, 'categories'])->name('categories');
+    Route::post('/categories', [AdminController::class, 'storeCategory'])->name('categories.store');
+    Route::delete('/categories/{category}', [AdminController::class, 'deleteCategory'])->name('categories.delete');
+
+    // Gestion des items
+    Route::get('/items', [AdminController::class, 'items'])->name('items');
+    Route::post('/items', [AdminController::class, 'storeItem'])->name('items.store');
+    Route::delete('/items/{item}', [AdminController::class, 'deleteItem'])->name('items.delete');
+
+    // Sécurité et maintenance
+    Route::post('/security/password', [AdminController::class, 'updateAdminPassword'])->name('security.password');
+    Route::post('/maintenance/backup', [AdminController::class, 'backupDatabase'])->name('maintenance.backup');
+    Route::get('/maintenance/integrity', [AdminController::class, 'verifyDatabaseIntegrity'])->name('maintenance.integrity');
+
+    // Statistiques
+    Route::get('/statistics', [AdminController::class, 'statistics'])->name('statistics');
 });
 
 // Supprimer la route resource qui peut causer des conflits

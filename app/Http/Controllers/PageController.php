@@ -129,6 +129,6 @@ class PageController extends Controller
 
     public function administration()
     {
-        return view('administration');
+        return view('admin.dashboard');
     }
 } 
