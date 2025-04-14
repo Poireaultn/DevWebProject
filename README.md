@@ -22,64 +22,62 @@ Le site sera accessible à l'adresse : http://127.0.0.1:8000
 Si vous clonez le projet pour la première fois :
 
 
-### Installer les dépendances PHP
+1. Installer les dépendances PHP
 ```bash
 composer install
 ```
 
-### Copier le fichier d'environnement
+2. Copier le fichier d'environnement
 ```bash
 cp .env.example .env
 ```
 
-### Modifier le fichier env pour ajouter vos identifiants sql
+3. Modifier le fichier env pour ajouter vos identifiants sql
 ```
 DB_USERNAME=[username_sql]
 DB_PASSWORD=[mdp_sql]
 ```
 
-### Générer la clé d'application
+4. Générer la clé d'application
 ```bash
 php artisan key:generate
 ```
 
-### Exécuter les migrations
+5. Initialisation de la base de données
+   
+    5.1. Créer la base de données en vous connectant à votre sql :
+   ```
+    CREATE DATABASE projetweb;
+   ```
+
+    5.2. Importer les données :
+    ```bash
+    mysql -u root -p projetweb < database/projetweb.sql
+    ```
+
+6. Exécuter les migrations
 ```bash
 php artisan migrate
 ```
 
-### Remplir la base de données
+7. Remplir la base de données
 ```bash
 php artisan db:seed
 ```
 
-### Installer les dépendances Node.js
+8. Installer les dépendances Node.js
 ```bash
 npm install
 ```
 
-### Compiler les assets
+9. Compiler les assets
 ```bash
 npm run dev
 ```
 
-### Lancer le serveur
+10. Lancer le serveur
 ```bash
 php artisan serve
-```
-
-## Initialisation de la base de données
-
-Après avoir récupéré le code depuis GitHub, exécutez les commandes suivantes pour initialiser la base de données :
-
-1. Créer la base de données en vous connectant à votre sql :
-```sql
-CREATE DATABASE projetweb;
-```
-
-2. Importer les données :
-```bash
-mysql -u root -p projetweb < database/projetweb.sql
 ```
 
 ## Fonctionnalités
@@ -96,6 +94,24 @@ Le projet permet de gérer différents équipements :
 - Emploi du temps
 - Parking
 - Parking à vélos
+
+## Comptes de connection
+
+1. Admin :
+   ```
+   Login : admin@cytech.fr
+   MDP : admin123
+    ```
+3. Professeur :
+   ```
+   Login : prof@cytech.fr
+   MDP : prof123
+   ```
+5. Etudiant :
+   ```
+   Login : etudiant@cytech.fr
+   MDP : etudiant123
+   ```
 
 ## Routes principales
 
